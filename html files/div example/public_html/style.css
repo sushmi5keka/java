@@ -1,0 +1,72 @@
+#maincountainet
+    {width: 70%;
+    height: 500px;
+    background: #aaa;
+    margin: 0 auto;}
+#headercontainer
+    {width: 100%;
+    height: 120px;
+    background: #065;
+    margin: 0 auto; }
+#bodycontainer
+    {width: 100%;
+    height: 200px;
+    background: #033;
+    margin: 0 auto; }
+#body1
+    {width: 30%;
+    height: 200px;
+    background: #0cc;
+    float: left; }
+#body2
+    {width: 70%;
+    height: 200px;
+    background: #0b5;
+    float: left; }
+#b1
+    {width: 100%;
+    height: 70px;
+    background: #0b5;
+    float: left; }
+#b2
+    {width: 100%;
+    height: 60px;
+    background: #065;
+    float: left; }
+#a
+    {width: 35%;
+    height: 60px;
+    background: #756;
+    float: left; }
+#b
+    {width: 35%;
+    height: 60px;
+    background: #943;
+    float: left; }
+#c
+    {width: 30%;
+    height: 60px;
+    background: #309;
+    float: left; }
+#b3
+    {width: 100%;
+    height: 70px;
+    background: #824;
+    float: left; }
+#subbodycontainer
+    {width: 100%;
+    height: 100px;
+    background: #aaa;
+    margin: 0 auto; }
+    
+#footercontainer
+    {width: 100%;
+    height: 80px;
+    background: #065;
+    margin: 0 auto; }
+.fourdiv
+    {width: 24.89%;
+    height: 80px;
+    border-right: 1px solid #824;
+    float: left;}
+    

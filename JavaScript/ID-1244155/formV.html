@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+<style>
+
+label {
+	color:#F63;
+	padding:2px 2px;
+}
+h3 { 
+	color: #6FF;
+}
+
+</style>
+
+</head>
+
+<body>
+<div style="width: 500px; margin:0 auto; padding:2px 2px; background:#FF3">
+<fieldset>
+<legend><h3><i>My Form</i></h3></legend>
+<form name="myForm" action="formV.html" onSubmit="return display()" method="post">
+
+Name :
+<input type="text" name="name">
+<label id="name"></label>
+<br/>
+<br/> 
+
+Gender :
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<label id="gender"></label>
+<br/>
+<br/>
+
+Education :
+<input type="checkbox" name="ssc" value="ssc">SSC
+<input type="checkbox" name="hsc" value="hsc">HSC
+<label id="education"></label>
+<br/>
+<br/>
+
+Round :
+<select name="round">
+	<option value="select a round">select a round</option>
+    <option value="round-31">Round-31</option>
+    <option value="round-32">Round-32</option>
+    <option value="round-33">Round-33</option>
+</select>
+<label id="round"></label>
+<br/>
+<br/>
+
+Message :
+<textarea name="msg" cols="5" rows="3"></textarea>
+<label id="msg"></label>
+<br/>
+<br/>
+
+<input type="submit" name="submit" value="submit">
+<input type="reset" name="reset" value="reset">
+
+</form>
+</fieldset>
+</div>
+
+
+<script>
+
+function display(){
+	var name = document.forms["myForm"]["name"].value;
+	
+	var gender = document.forms["myForm"]["gender"].value;
+	
+	var education = "";
+	if(document.forms["myForm"].ssc.checked){
+		education += document.forms["myForm"]["ssc"].value+ " , ";
+	}
+	if(document.forms["myForm"].hsc.checked){
+		education += document.forms["myForm"]["hsc"].value;
+	}
+	
+	var round = document.forms["myForm"]["round"].value;
+	
+	var msg = document.forms["myForm"]["msg"].value;
+	
+	
+	if(name==""){
+		document.getElementById('name').innerHTML="enter your name";
+		return false;
+		
+	}else if(name.length<3){
+		document.getElementById('name').innerHTML="enter at least 3 letter";
+		return false;
+		
+	}else if(gender==""){
+		document.getElementById('gender').innerHTML="enter your gender";
+		return false;
+		
+	}else if(!document.forms["myForm"].ssc.checked && !document.forms["myForm"].hsc.checked){
+		document.getElementById('education').innerHTML="enter your education qualification";
+		return false;
+		
+	}else if(round=="select a round"){
+		document.getElementById('round').innerHTML="enter your round";
+		return false;
+		
+	}else if(msg.length<10){
+		document.getElementById('msg').innerHTML="enter at least 10 letter";
+		return false;
+		
+	}else{
+		document.write("Name : " + name + "<br/>" );
+		document.write("Gender : " + gender + "<br/>" );
+		document.write("Education : " + education + "<br/>" );
+		document.write("Round : " + round + "<br/>" );
+		document.write("Message : " + msg + "<br/>" );
+	}
+	
+}
+
+
+</script>
+
+</body>
+</html>

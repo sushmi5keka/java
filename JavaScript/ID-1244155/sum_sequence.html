@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+var x = parseInt(prompt("enter a number"));
+var y = parseInt(prompt("enter a number"));
+
+
+function summ(a,b){
+	var sum =0;
+	if(a<b){
+		for(var i=a; i<=b; i++){
+		sum += i;}
+		
+	}else{
+		for(var i=a; i>=b; i--){
+		sum += i;
+		}
+	}
+	document.write(sum);
+}
+summ(x,y);
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+</head>
+
+<body>
+	<form name="customer">
+    <br>
+    <input type="text" name="fname"/>First Name :
+    <br>
+    <br>
+    <input type="text" name="lname"/>Last Name :
+    <br>
+    <br>
+    <input type="text" name="address"/>Address :
+    <br>
+    <br>
+    <input type="text" name="city"/>city :
+    <input type="text" name="state" size=2/> State :
+    <p>
+    <input type="button" value="click Here" onclick="showEm()"/>
+    </p>
+    </form>
+    
+<script>
+function showEm(){
+		with (document.customer){
+			var alpha=fname.value;
+			var beta=lname.value;
+			var gamma=address.value;
+			var delta=city.value;
+			var epsilon=state.value;
+		}
+		var fullName=alpha +" "+beta+"\n";
+		var livesHere=gamma+"\n"+delta+","+epsilon;
+		alert(fullName+livesHere);
+}
+</script>
+</body>
+</html>

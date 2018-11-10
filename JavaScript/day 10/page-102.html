@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	var acme= new Object();
+	acme.management = "Management coordinates everything.";
+	acme.management = new Object();
+	acme.management.rand ="Research and Development works to develop new and beter products 						   and service.";
+	acme.finance="Finence keeps track of the money.";
+	acme.production="production makes the stuff.";
+	acme.marketing="Marketing develops strategies to target markets for the product.";
+	acme.marketing=new Object();
+	acme.marketing.sales = "sales contacts potential clients and sell the product.";
+	acme.fulfillment="Fullfillment delivares sold product.";
+	var display="<h2>First the properties of the acme object</h2>";
+	for (var counter in acme) {
+		display += counter + "<br/>";
+	}
+	display +="<h3>And now the values of the properties of managment and marketing</h3>";
+	display +=acme.management.rand +"<br/>";
+	display +=acme.marketing.sales;
+	document.write(display);
+</script>
+</head>
+
+<body>
+</body>
+</html>

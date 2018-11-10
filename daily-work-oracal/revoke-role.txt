@@ -1,0 +1,91 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Aug 7 10:50:13 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user xyz2 identified by xyz2;
+
+User created.
+
+SQL> create role manager;
+
+Role created.
+
+SQL> grant create session,create table,create view to manager;
+
+Grant succeeded.
+
+SQL> grant manager to xyz2;
+
+Grant succeeded.
+
+SQL> alter user xyz2 quota 500m on system;
+
+User altered.
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> create table test(id number(5) primary key,name varchar2(15) not null);
+
+Table created.
+
+SQL> insert into test(id,name) values(1,'apple');
+
+1 row created.
+
+SQL> insert into test(id,name) values(2,'banana');
+
+1 row created.
+
+SQL> create view t_view as select * from test;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME
+------------------------------
+T_VIEW
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> revoke create view from manager;
+
+Revoke succeeded.
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> drop view t_view;
+
+View dropped.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant create view to manager;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> create view t_view as select * from test;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME
+------------------------------
+T_VIEW
+
+SQL>

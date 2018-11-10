@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+body{font-family:verdana}
+</style>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	function replay(){
+		var hi=new String();
+		hi=parent.frames[0].name;
+		parent.head.document.form[0].elements[0].value="Hello,"+ hi.toUpperCase()+"!";
+		var menName=parent.frames[1].name;
+		document.forms[0].elements[1].value=menName;
+	}
+</script>
+</head>
+
+<body bgcolor="#6699FF">
+<h3>Data</h3>
+<form><h4>
+<input type=text>One<br>
+<input type=text>Two<br>
+<input type=text>Three<br>
+<input type=button value="Change Something" onClick="reply()">
+</form>
+</body>
+</html>

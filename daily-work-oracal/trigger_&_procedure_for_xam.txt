@@ -1,0 +1,350 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Aug 29 09:07:46 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user abcd identified by sys
+  2  ;
+
+User created.
+
+SQL> grant dba to abcd;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: abcd
+Enter password:
+Connected.
+SQL> create table customer(ID number(3) primary key,Name varchar2(7) not null,Mobile number(11) unique,Country varchar2(9) default 'BD');
+
+Table created.
+
+SQL> create sequence seq_customer
+  2  increment by 10
+  3  start with 1
+  4  maxvalue 100
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+SQL> create table backup_customer as select * from customer;
+
+Table created.
+
+SQL> create or replace trigger cus_aftr_inst after insert on customer for each row
+  2  declare
+  3  begin
+  4  insert into backup_customer values(:new.ID, :new.Name,:new.Mobile,:new.Country);
+  5  dbms_output.put_line('Data successfully inserted');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create or replace trigger cus_aftr_up after update on customer for each row
+  2  declare
+  3  begin
+  4  update backup_customer
+  5  set Name=:new.Name, Mobile=:new.Mobile, Country=:new.Country where ID=:old.ID;
+  6  dbms_output.put_line('data successfully updated');
+  7  end;
+  8  /
+
+Trigger created.
+
+SQL> create or replace trigger cus_aftr_del after delete on customer for each row
+  2  declare
+  3  begin
+  4  delete backup_customer
+  5  where ID=:old.ID;
+  6  dbms_output.put_line('data successfully deleted');
+  7  end;
+  8  /
+
+Trigger created.
+
+
+SQL> insert into customer(ID,Name,Mobile,Country) values(seq_customer.nextval,'Moly',111,'Japan');
+
+1 row created.
+
+SQL> insert into customer(ID,Name,Mobile,Country) values(seq_customer.nextval,'Poly',112,'Korea');
+
+1 row created.
+
+SQL> insert into customer(ID,Name,Mobile,Country) values(seq_customer.nextval,'joly',113,'India');
+
+1 row created.
+
+SQL> insert into customer(ID,Name,Mobile) values(seq_customer.nextval,'koly',114);
+
+1 row created.
+
+SQL> insert into customer(ID,Name,Mobile) values(seq_customer.nextval,'doly',115);
+
+1 row created.
+
+SQL> describe customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(3)
+ NAME                                      NOT NULL VARCHAR2(7)
+ MOBILE                                             NUMBER(11)
+ COUNTRY                                            VARCHAR2(9)
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 Poly           112 Korea
+        21 joly           113 India
+        31 koly           114 BD
+        41 doly           115 BD
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 Poly           112 Korea
+        21 joly           113 India
+        31 koly           114 BD
+        41 doly           115 BD
+
+
+
+SQL> update customer set Name='rekha' where ID=11;
+
+1 row updated.
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        31 koly           114 BD
+        41 doly           115 BD
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        31 koly           114 BD
+        41 doly           115 BD
+
+SQL> delete customer where ID=31;
+
+1 row deleted.
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 doly           115 BD
+
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 doly           115 BD
+
+====================================================================================
+
+
+
+SQL*Plus: Release 11.2.0.2.0 Production on Thu Aug 30 09:10:31 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: abcd
+Enter password:
+Connected.
+SQL> describe customer;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(3)
+ NAME                                      NOT NULL VARCHAR2(7)
+ MOBILE                                             NUMBER(11)
+ COUNTRY                                            VARCHAR2(9)
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 doly           115 BD
+
+
+
+
+
+
+SQL> create or replace procedure insertCustomer(
+  2  c_id in customer.ID%type,
+  3  c_name in customer.Name%type,
+  4  c_mobile in customer.Mobile%type,
+  5  c_country in customer.Country%type)
+  6  is
+  7  begin
+  8  insert into customer(ID,Name,Mobile,Country) values(c_id,c_name,c_mobile,c_country);
+  9  end;
+ 10  /
+
+Procedure created.
+
+SQL> begin
+  2  insertCustomer(seq_customer.nextval,'happy',121,'pakistan');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> begin
+  2  insertCustomer(seq_customer.nextval,'lovely',122,'paris');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 doly           115 BD
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+6 rows selected.
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 doly           115 BD
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+6 rows selected.
+
+
+
+
+
+
+SQL> create or replace procedure updateCustomer(
+  2   c_id in customer.ID%type,
+  3   c_name in customer.Name%type,
+  4   c_mobile in customer.Mobile%type,
+  5   c_country in customer.Country%type)
+  6   is
+  7   begin
+  8   update customer set Name=c_name, Mobile=c_mobile, Country=c_country where ID=c_id;
+  9   end;
+ 10  /
+
+Procedure created.
+
+SQL> begin
+  2  updateCustomer(41,'sweety',125,'nepal');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 sweety         125 nepal
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+6 rows selected.
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        21 joly           113 India
+        41 sweety         125 nepal
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+6 rows selected.
+
+
+
+
+
+
+
+SQL>  create or replace procedure deleteCustomer(
+  2   c_id in customer.ID%type)
+  3   as
+  4   begin
+  5   delete from customer where ID=c_id;
+  6   end;
+  7  /
+
+Procedure created.
+
+SQL> begin
+  2  delete from customer where ID=21;
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        41 sweety         125 nepal
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+SQL> select * from backup_customer;
+
+        ID NAME        MOBILE COUNTRY
+---------- ------- ---------- ---------
+         1 Moly           111 Japan
+        11 rekha          112 Korea
+        41 sweety         125 nepal
+        51 happy          121 pakistan
+        61 lovely         122 paris
+
+SQL>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+body {
+	font-family:verdana;
+	font-size:11pt;
+	background-color:#009;
+	font-weight:bold;	
+}
+
+.fStyle{
+	color: #0F0;
+	background-color:#C3C;	
+}
+</style>
+<script>
+function sortItOut(form){
+	var display="key feature and components \n\n";
+	var reviewer=new Object();
+	reviewer = document.hardware;
+	for(var counter=0;counter<reviewer.length;counter++){
+		if(reviewer.elements[counter].checked){
+			display += reviewer.elements[counter].value + "\n";
+		}
+}
+reviewer.showTime.value=display;
+}
+</script>
+</head>
+
+<body onLoad="document.hardware.reset()">
+<form name="hardware">
+	<div class="fStyle">
+    Pick one of the following as the most important:<br/>
+    <ul>
+    <input type="radio" name="components" value="cost" checked=true>cost<br/>
+    <input type="radio" name="components" value="Reliability">Reliability<br/>
+    <input type="radio" name="components" value="Reputation" onClick="alert('Reputation?')">Reputation<br/>
+    <input type="radio" name="components" value="Ease of Use">Ease of Use<p>
+    </ul>
+    which of the following do you plan to purchase with your computer?
+    Check all that apply:<p>
+    <ul>
+    <input type="checkbox" name="printer" value="printer">printer<br>
+    <input type="checkbox" name="disk" value="High Capacity disk">High Capacity disk<br>
+    <input type="checkbox" name="scen" value="scanner" checked=true>scanner<br>
+    <input type="checkbox" name="mem" value="Additional Memory">Additional Memory<p></div>
+    </ul>
+    <textarea cols="50" rows="8" name="showTime"></textarea>
+    <input type="button" value="sort It Out" onClick="sortItOut(this.form)">
+    
+</form>
+</body>
+</html>

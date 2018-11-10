@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	function tooShort(){
+		if(document.users.userName.value.length<7){
+				alert("your username must be at least 7 characters;")
+		}else{
+				alert("your username is accepted:");
+		}
+	}
+</script>
+</head>
+
+<body bgcolor="#6633CC">
+<h4>Enter a user name between 7 and 12 characters long:</h4>
+<form name="users">
+<input type="text" name="userName" size=12 maxlength=12 value="username"><p>
+<input type="button" value="check user name" onClick="tooShort();">
+</form>
+</body>
+</html>

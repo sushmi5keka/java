@@ -1,0 +1,147 @@
+SQL> connect
+Enter user-name: xyz
+Connected.
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+TEST                                                                            
+
+SQL> describe test;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(2)
+ NAME                                      NOT NULL VARCHAR2(15)
+
+SQL> alter table test add(phone_number number(11),email varchar2(20) unique);
+
+Table altered.
+
+SQL> alter table test modify(phone_number number(11) unique);
+
+Table altered.
+
+SQL> alter table test drop column (email);
+alter table test drop column (email)
+                             *
+ERROR at line 1:
+ORA-00904: : invalid identifier 
+
+
+SQL> alter table test drop column email;
+
+Table altered.
+
+SQL> alter table test modify(id number(3) primary key);
+alter table test modify(id number(3) primary key)
+                                     *
+ERROR at line 1:
+ORA-02260: table can have only one primary key 
+
+
+SQL> alter table test modify(id number(3));
+
+Table altered.
+
+SQL> describe test;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(3)
+ NAME                                      NOT NULL VARCHAR2(15)
+ PHONE_NUMBER                                       NUMBER(11)
+
+SQL> select * from test;
+
+        ID NAME            PHONE_NUMBER                                         
+---------- --------------- ------------                                         
+         1 orange                                                               
+
+SQL> update test set phone_number=11111111111 where id=1;
+
+1 row updated.
+
+SQL> insert into test(id,name,phone_number) values(2,blue,22222222);
+insert into test(id,name,phone_number) values(2,blue,22222222)
+                                                *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> insert into test(id,name,phone_number) values(2,'blue',22222222);
+
+1 row created.
+
+SQL> insert into test(id,name,phone_number) values(2,'pink',33333333);
+insert into test(id,name,phone_number) values(2,'pink',33333333)
+*
+ERROR at line 1:
+ORA-00001: unique constraint (XYZ.SYS_C007147) violated 
+
+
+SQL> insert into test(id,name,phone_number) values(3,'pink',33333333);
+
+1 row created.
+
+SQL> select * from test;
+
+        ID NAME            PHONE_NUMBER                                         
+---------- --------------- ------------                                         
+         1 orange            1.1111E+10                                         
+         2 blue                22222222                                         
+         3 pink                33333333                                         
+
+SQL> create table best(id number(3) primary key,name varchar2(15));
+
+Table created.
+
+SQL> alter table best add test_id number(3);
+
+Table altered.
+
+SQL> alter table best add constraint t_B_fk foreign key(test_id) references test on delete cascade;
+
+Table altered.
+
+SQL> describe best
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                        NOT NULL NUMBER(3)
+ NAME                                               VARCHAR2(15)
+ TEST_ID                                            NUMBER(3)
+
+SQL> insert into best(id,name) values(1,'black',3);
+insert into best(id,name) values(1,'black',3)
+            *
+ERROR at line 1:
+ORA-00913: too many values 
+
+
+SQL> insert into best(id,name,test_id) values(1,'black',3);
+
+1 row created.
+
+SQL> insert into best(id,name,test_id) values(2,'white',1);
+
+1 row created.
+
+SQL> insert into best(id,name,test_id) values(3,'red',2);
+
+1 row created.
+
+SQL> select * from best;
+
+        ID NAME               TEST_ID                                           
+---------- --------------- ----------                                           
+         1 black                    3                                           
+         2 white                    1                                           
+         3 red                      2                                           
+
+SQL> select * from test;
+
+        ID NAME            PHONE_NUMBER                                         
+---------- --------------- ------------                                         
+         1 orange            1.1111E+10                                         
+         2 blue                22222222                                         
+         3 pink                33333333                                         
+
+SQL> spool off

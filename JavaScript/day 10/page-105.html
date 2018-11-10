@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+function showScreen(){
+	var display="<h2>Your screen has the following charateristics:</h2>";
+	var screenSee = new Array (5);
+	screenSee[0] = "Available Screen height : " + screen.availHeight;
+	screenSee[1] = "Available Screen width : " + screen.availWidth;
+	screenSee[2] = "My Screen height : " + screen.height;
+	screenSee[3] = "my Screen width : " + screen.width;
+	screenSee[4] = "Color Depth : " + screen.colorDepth;
+	
+	for (var counter =0;counter<screenSee.length;counter++){
+		display+=screenSee[counter]+ "<br/>";
+	}
+	display +="<br></b></div>"
+	document.write(display);
+	}
+	showScreen();
+</script>
+</head>
+
+<body>
+</body>
+</html>

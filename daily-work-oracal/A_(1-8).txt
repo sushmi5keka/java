@@ -1,0 +1,1210 @@
+SQL> connect
+Enter user-name: hr
+Connected.
+SQL> select table_name from user_tables;
+
+TABLE_NAME                                                                      
+------------------------------                                                  
+REGIONS                                                                         
+LOCATIONS                                                                       
+DEPARTMENTS                                                                     
+JOBS                                                                            
+EMPLOYEES                                                                       
+JOB_HISTORY                                                                     
+HTMLDB_PLAN_TABLE                                                               
+ABC                                                                             
+APPLE                                                                           
+COUNTRIES                                                                       
+
+10 rows selected.
+
+SQL> select last_name,job_id, salary as sal from employees;
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+King                      AD_PRES         24000                                 
+Kochhar                   AD_VP           17000                                 
+De Haan                   AD_VP           17000                                 
+Hunold                    IT_PROG          9000                                 
+Ernst                     IT_PROG          6000                                 
+Austin                    IT_PROG          4800                                 
+Pataballa                 IT_PROG          4800                                 
+Lorentz                   IT_PROG          4200                                 
+Greenberg                 FI_MGR          12008                                 
+Faviet                    FI_ACCOUNT       9000                                 
+Chen                      FI_ACCOUNT       8200                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Sciarra                   FI_ACCOUNT       7700                                 
+Urman                     FI_ACCOUNT       7800                                 
+Popp                      FI_ACCOUNT       6900                                 
+Raphaely                  PU_MAN          11000                                 
+Khoo                      PU_CLERK         3100                                 
+Baida                     PU_CLERK         2900                                 
+Tobias                    PU_CLERK         2800                                 
+Himuro                    PU_CLERK         2600                                 
+Colmenares                PU_CLERK         2500                                 
+Weiss                     ST_MAN           8000                                 
+Fripp                     ST_MAN           8200                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Kaufling                  ST_MAN           7900                                 
+Vollman                   ST_MAN           6500                                 
+Mourgos                   ST_MAN           5800                                 
+Nayer                     ST_CLERK         3200                                 
+Mikkilineni               ST_CLERK         2700                                 
+Landry                    ST_CLERK         2400                                 
+Markle                    ST_CLERK         2200                                 
+Bissot                    ST_CLERK         3300                                 
+Atkinson                  ST_CLERK         2800                                 
+Marlow                    ST_CLERK         2500                                 
+Olson                     ST_CLERK         2100                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Mallin                    ST_CLERK         3300                                 
+Rogers                    ST_CLERK         2900                                 
+Gee                       ST_CLERK         2400                                 
+Philtanker                ST_CLERK         2200                                 
+Ladwig                    ST_CLERK         3600                                 
+Stiles                    ST_CLERK         3200                                 
+Seo                       ST_CLERK         2700                                 
+Patel                     ST_CLERK         2500                                 
+Rajs                      ST_CLERK         3500                                 
+Davies                    ST_CLERK         3100                                 
+Matos                     ST_CLERK         2600                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Vargas                    ST_CLERK         2500                                 
+Russell                   SA_MAN          14000                                 
+Partners                  SA_MAN          13500                                 
+Errazuriz                 SA_MAN          12000                                 
+Cambrault                 SA_MAN          11000                                 
+Zlotkey                   SA_MAN          10500                                 
+Tucker                    SA_REP          10000                                 
+Bernstein                 SA_REP           9500                                 
+Hall                      SA_REP           9000                                 
+Olsen                     SA_REP           8000                                 
+Cambrault                 SA_REP           7500                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Tuvault                   SA_REP           7000                                 
+King                      SA_REP          10000                                 
+Sully                     SA_REP           9500                                 
+McEwen                    SA_REP           9000                                 
+Smith                     SA_REP           8000                                 
+Doran                     SA_REP           7500                                 
+Sewall                    SA_REP           7000                                 
+Vishney                   SA_REP          10500                                 
+Greene                    SA_REP           9500                                 
+Marvins                   SA_REP           7200                                 
+Lee                       SA_REP           6800                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Ande                      SA_REP           6400                                 
+Banda                     SA_REP           6200                                 
+Ozer                      SA_REP          11500                                 
+Bloom                     SA_REP          10000                                 
+Fox                       SA_REP           9600                                 
+Smith                     SA_REP           7400                                 
+Bates                     SA_REP           7300                                 
+Kumar                     SA_REP           6100                                 
+Abel                      SA_REP          11000                                 
+Hutton                    SA_REP           8800                                 
+Taylor                    SA_REP           8600                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Livingston                SA_REP           8400                                 
+Grant                     SA_REP           7000                                 
+Johnson                   SA_REP           6200                                 
+Taylor                    SH_CLERK         3200                                 
+Fleaur                    SH_CLERK         3100                                 
+Sullivan                  SH_CLERK         2500                                 
+Geoni                     SH_CLERK         2800                                 
+Sarchand                  SH_CLERK         4200                                 
+Bull                      SH_CLERK         4100                                 
+Dellinger                 SH_CLERK         3400                                 
+Cabrio                    SH_CLERK         3000                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Chung                     SH_CLERK         3800                                 
+Dilly                     SH_CLERK         3600                                 
+Gates                     SH_CLERK         2900                                 
+Perkins                   SH_CLERK         2500                                 
+Bell                      SH_CLERK         4000                                 
+Everett                   SH_CLERK         3900                                 
+McCain                    SH_CLERK         3200                                 
+Jones                     SH_CLERK         2800                                 
+Walsh                     SH_CLERK         3100                                 
+Feeney                    SH_CLERK         3000                                 
+OConnell                  SH_CLERK         2600                                 
+
+LAST_NAME                 JOB_ID            SAL                                 
+------------------------- ---------- ----------                                 
+Grant                     SH_CLERK         2600                                 
+Whalen                    AD_ASST          4400                                 
+Hartstein                 MK_MAN          13000                                 
+Fay                       MK_REP           6000                                 
+Mavris                    HR_REP           6500                                 
+Baer                      PR_REP          10000                                 
+Higgins                   AC_MGR          12008                                 
+Gietz                     AC_ACCOUNT       8300                                 
+appppa                    AC_ACCOUNT      90000                                 
+
+108 rows selected.
+
+SQL> select * from jobs job_grades;
+
+JOB_ID     JOB_TITLE                           MIN_SALARY MAX_SALARY            
+---------- ----------------------------------- ---------- ----------            
+AD_PRES    President                                20080      40000            
+AD_VP      Administration Vice President            15000      30000            
+AD_ASST    Administration Assistant                  3000       6000            
+FI_MGR     Finance Manager                           8200      16000            
+FI_ACCOUNT Accountant                                4200       9000            
+AC_MGR     Accounting Manager                        8200      16000            
+AC_ACCOUNT Public Accountant                         4200       9000            
+SA_MAN     Sales Manager                            10000      20080            
+SA_REP     Sales Representative                      6000      12008            
+PU_MAN     Purchasing Manager                        8000      15000            
+PU_CLERK   Purchasing Clerk                          2500       5500            
+
+JOB_ID     JOB_TITLE                           MIN_SALARY MAX_SALARY            
+---------- ----------------------------------- ---------- ----------            
+ST_MAN     Stock Manager                             5500       8500            
+ST_CLERK   Stock Clerk                               2008       5000            
+SH_CLERK   Shipping Clerk                            2500       5500            
+IT_PROG    Programmer                                4000      10000            
+MK_MAN     Marketing Manager                         9000      15000            
+MK_REP     Marketing Representative                  4000       9000            
+HR_REP     Human Resources Representative            4000       9000            
+PR_REP     Public Relations Representative           4500      10500            
+
+19 rows selected.
+
+SQL> select employee_id, last_name , salary * 12 annual_salary from employees;
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        100 King                             288000                             
+        101 Kochhar                          204000                             
+        102 De Haan                          204000                             
+        103 Hunold                           108000                             
+        104 Ernst                             72000                             
+        105 Austin                            57600                             
+        106 Pataballa                         57600                             
+        107 Lorentz                           50400                             
+        108 Greenberg                        144096                             
+        109 Faviet                           108000                             
+        110 Chen                              98400                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        111 Sciarra                           92400                             
+        112 Urman                             93600                             
+        113 Popp                              82800                             
+        114 Raphaely                         132000                             
+        115 Khoo                              37200                             
+        116 Baida                             34800                             
+        117 Tobias                            33600                             
+        118 Himuro                            31200                             
+        119 Colmenares                        30000                             
+        120 Weiss                             96000                             
+        121 Fripp                             98400                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        122 Kaufling                          94800                             
+        123 Vollman                           78000                             
+        124 Mourgos                           69600                             
+        125 Nayer                             38400                             
+        126 Mikkilineni                       32400                             
+        127 Landry                            28800                             
+        128 Markle                            26400                             
+        129 Bissot                            39600                             
+        130 Atkinson                          33600                             
+        131 Marlow                            30000                             
+        132 Olson                             25200                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        133 Mallin                            39600                             
+        134 Rogers                            34800                             
+        135 Gee                               28800                             
+        136 Philtanker                        26400                             
+        137 Ladwig                            43200                             
+        138 Stiles                            38400                             
+        139 Seo                               32400                             
+        140 Patel                             30000                             
+        141 Rajs                              42000                             
+        142 Davies                            37200                             
+        143 Matos                             31200                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        144 Vargas                            30000                             
+        145 Russell                          168000                             
+        146 Partners                         162000                             
+        147 Errazuriz                        144000                             
+        148 Cambrault                        132000                             
+        149 Zlotkey                          126000                             
+        150 Tucker                           120000                             
+        151 Bernstein                        114000                             
+        152 Hall                             108000                             
+        153 Olsen                             96000                             
+        154 Cambrault                         90000                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        155 Tuvault                           84000                             
+        156 King                             120000                             
+        157 Sully                            114000                             
+        158 McEwen                           108000                             
+        159 Smith                             96000                             
+        160 Doran                             90000                             
+        161 Sewall                            84000                             
+        162 Vishney                          126000                             
+        163 Greene                           114000                             
+        164 Marvins                           86400                             
+        165 Lee                               81600                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        166 Ande                              76800                             
+        167 Banda                             74400                             
+        168 Ozer                             138000                             
+        169 Bloom                            120000                             
+        170 Fox                              115200                             
+        171 Smith                             88800                             
+        172 Bates                             87600                             
+        173 Kumar                             73200                             
+        174 Abel                             132000                             
+        175 Hutton                           105600                             
+        176 Taylor                           103200                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        177 Livingston                       100800                             
+        178 Grant                             84000                             
+        179 Johnson                           74400                             
+        180 Taylor                            38400                             
+        181 Fleaur                            37200                             
+        182 Sullivan                          30000                             
+        183 Geoni                             33600                             
+        184 Sarchand                          50400                             
+        185 Bull                              49200                             
+        186 Dellinger                         40800                             
+        187 Cabrio                            36000                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        188 Chung                             45600                             
+        189 Dilly                             43200                             
+        190 Gates                             34800                             
+        191 Perkins                           30000                             
+        192 Bell                              48000                             
+        193 Everett                           46800                             
+        194 McCain                            38400                             
+        195 Jones                             33600                             
+        196 Walsh                             37200                             
+        197 Feeney                            36000                             
+        198 OConnell                          31200                             
+
+EMPLOYEE_ID LAST_NAME                 ANNUAL_SALARY                             
+----------- ------------------------- -------------                             
+        199 Grant                             31200                             
+        200 Whalen                            52800                             
+        201 Hartstein                        156000                             
+        202 Fay                               72000                             
+        203 Mavris                            78000                             
+        204 Baer                             120000                             
+        205 Higgins                          144096                             
+        206 Gietz                             99600                             
+        207 appppa                          1080000                             
+
+108 rows selected.
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> select * from departments;
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+           10 Administration                        200        1700             
+           20 Marketing                             201        1800             
+           30 Purchasing                            114        1700             
+           40 Human Resources                       203        2400             
+           50 Shipping                              121        1500             
+           60 IT                                    103        1400             
+           70 Public Relations                      204        2700             
+           80 Sales                                 145        2500             
+           90 Executive                             100        1700             
+          100 Finance                               108        1700             
+          110 Accounting                            205        1700             
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+          120 Treasury                                         1700             
+          130 Corporate Tax                                    1700             
+          140 Control And Credit                               1700             
+          150 Shareholder Services                             1700             
+          160 Benefits                                         1700             
+          170 Manufacturing                                    1700             
+          180 Construction                                     1700             
+          190 Contracting                                      1700             
+          200 Operations                                       1700             
+          210 IT Support                                       1700             
+          220 NOC                                              1700             
+
+DEPARTMENT_ID DEPARTMENT_NAME                MANAGER_ID LOCATION_ID             
+------------- ------------------------------ ---------- -----------             
+          230 IT Helpdesk                                      1700             
+          240 Government Sales                                 1700             
+          250 Retail Sales                                     1700             
+          260 Recruiting                                       1700             
+          270 Payroll                                          1700             
+          280 iDB                                   101        1700             
+
+28 rows selected.
+
+SQL> describe employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> select employee_id, last_name,job_id,hire_date StartDate from employees;
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        100 King                      AD_PRES    17-JUN-03                      
+        101 Kochhar                   AD_VP      21-SEP-05                      
+        102 De Haan                   AD_VP      13-JAN-01                      
+        103 Hunold                    IT_PROG    03-JAN-06                      
+        104 Ernst                     IT_PROG    21-MAY-07                      
+        105 Austin                    IT_PROG    25-JUN-05                      
+        106 Pataballa                 IT_PROG    05-FEB-06                      
+        107 Lorentz                   IT_PROG    07-FEB-07                      
+        108 Greenberg                 FI_MGR     17-AUG-02                      
+        109 Faviet                    FI_ACCOUNT 16-AUG-02                      
+        110 Chen                      FI_ACCOUNT 28-SEP-05                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        111 Sciarra                   FI_ACCOUNT 30-SEP-05                      
+        112 Urman                     FI_ACCOUNT 07-MAR-06                      
+        113 Popp                      FI_ACCOUNT 07-DEC-07                      
+        114 Raphaely                  PU_MAN     07-DEC-02                      
+        115 Khoo                      PU_CLERK   18-MAY-03                      
+        116 Baida                     PU_CLERK   24-DEC-05                      
+        117 Tobias                    PU_CLERK   24-JUL-05                      
+        118 Himuro                    PU_CLERK   15-NOV-06                      
+        119 Colmenares                PU_CLERK   10-AUG-07                      
+        120 Weiss                     ST_MAN     18-JUL-04                      
+        121 Fripp                     ST_MAN     10-APR-05                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        122 Kaufling                  ST_MAN     01-MAY-03                      
+        123 Vollman                   ST_MAN     10-OCT-05                      
+        124 Mourgos                   ST_MAN     16-NOV-07                      
+        125 Nayer                     ST_CLERK   16-JUL-05                      
+        126 Mikkilineni               ST_CLERK   28-SEP-06                      
+        127 Landry                    ST_CLERK   14-JAN-07                      
+        128 Markle                    ST_CLERK   08-MAR-08                      
+        129 Bissot                    ST_CLERK   20-AUG-05                      
+        130 Atkinson                  ST_CLERK   30-OCT-05                      
+        131 Marlow                    ST_CLERK   16-FEB-05                      
+        132 Olson                     ST_CLERK   10-APR-07                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        133 Mallin                    ST_CLERK   14-JUN-04                      
+        134 Rogers                    ST_CLERK   26-AUG-06                      
+        135 Gee                       ST_CLERK   12-DEC-07                      
+        136 Philtanker                ST_CLERK   06-FEB-08                      
+        137 Ladwig                    ST_CLERK   14-JUL-03                      
+        138 Stiles                    ST_CLERK   26-OCT-05                      
+        139 Seo                       ST_CLERK   12-FEB-06                      
+        140 Patel                     ST_CLERK   06-APR-06                      
+        141 Rajs                      ST_CLERK   17-OCT-03                      
+        142 Davies                    ST_CLERK   29-JAN-05                      
+        143 Matos                     ST_CLERK   15-MAR-06                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        144 Vargas                    ST_CLERK   09-JUL-06                      
+        145 Russell                   SA_MAN     01-OCT-04                      
+        146 Partners                  SA_MAN     05-JAN-05                      
+        147 Errazuriz                 SA_MAN     10-MAR-05                      
+        148 Cambrault                 SA_MAN     15-OCT-07                      
+        149 Zlotkey                   SA_MAN     29-JAN-08                      
+        150 Tucker                    SA_REP     30-JAN-05                      
+        151 Bernstein                 SA_REP     24-MAR-05                      
+        152 Hall                      SA_REP     20-AUG-05                      
+        153 Olsen                     SA_REP     30-MAR-06                      
+        154 Cambrault                 SA_REP     09-DEC-06                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        155 Tuvault                   SA_REP     23-NOV-07                      
+        156 King                      SA_REP     30-JAN-04                      
+        157 Sully                     SA_REP     04-MAR-04                      
+        158 McEwen                    SA_REP     01-AUG-04                      
+        159 Smith                     SA_REP     10-MAR-05                      
+        160 Doran                     SA_REP     15-DEC-05                      
+        161 Sewall                    SA_REP     03-NOV-06                      
+        162 Vishney                   SA_REP     11-NOV-05                      
+        163 Greene                    SA_REP     19-MAR-07                      
+        164 Marvins                   SA_REP     24-JAN-08                      
+        165 Lee                       SA_REP     23-FEB-08                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        166 Ande                      SA_REP     24-MAR-08                      
+        167 Banda                     SA_REP     21-APR-08                      
+        168 Ozer                      SA_REP     11-MAR-05                      
+        169 Bloom                     SA_REP     23-MAR-06                      
+        170 Fox                       SA_REP     24-JAN-06                      
+        171 Smith                     SA_REP     23-FEB-07                      
+        172 Bates                     SA_REP     24-MAR-07                      
+        173 Kumar                     SA_REP     21-APR-08                      
+        174 Abel                      SA_REP     11-MAY-04                      
+        175 Hutton                    SA_REP     19-MAR-05                      
+        176 Taylor                    SA_REP     24-MAR-06                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        177 Livingston                SA_REP     23-APR-06                      
+        178 Grant                     SA_REP     24-MAY-07                      
+        179 Johnson                   SA_REP     04-JAN-08                      
+        180 Taylor                    SH_CLERK   24-JAN-06                      
+        181 Fleaur                    SH_CLERK   23-FEB-06                      
+        182 Sullivan                  SH_CLERK   21-JUN-07                      
+        183 Geoni                     SH_CLERK   03-FEB-08                      
+        184 Sarchand                  SH_CLERK   27-JAN-04                      
+        185 Bull                      SH_CLERK   20-FEB-05                      
+        186 Dellinger                 SH_CLERK   24-JUN-06                      
+        187 Cabrio                    SH_CLERK   07-FEB-07                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        188 Chung                     SH_CLERK   14-JUN-05                      
+        189 Dilly                     SH_CLERK   13-AUG-05                      
+        190 Gates                     SH_CLERK   11-JUL-06                      
+        191 Perkins                   SH_CLERK   19-DEC-07                      
+        192 Bell                      SH_CLERK   04-FEB-04                      
+        193 Everett                   SH_CLERK   03-MAR-05                      
+        194 McCain                    SH_CLERK   01-JUL-06                      
+        195 Jones                     SH_CLERK   17-MAR-07                      
+        196 Walsh                     SH_CLERK   24-APR-06                      
+        197 Feeney                    SH_CLERK   23-MAY-06                      
+        198 OConnell                  SH_CLERK   21-JUN-07                      
+
+EMPLOYEE_ID LAST_NAME                 JOB_ID     STARTDATE                      
+----------- ------------------------- ---------- ---------                      
+        199 Grant                     SH_CLERK   13-JAN-08                      
+        200 Whalen                    AD_ASST    17-SEP-03                      
+        201 Hartstein                 MK_MAN     17-FEB-04                      
+        202 Fay                       MK_REP     17-AUG-05                      
+        203 Mavris                    HR_REP     07-JUN-02                      
+        204 Baer                      PR_REP     07-JUN-02                      
+        205 Higgins                   AC_MGR     07-JUN-02                      
+        206 Gietz                     AC_ACCOUNT 07-JUN-02                      
+        207 appppa                    AC_ACCOUNT 26-JUL-18                      
+
+108 rows selected.
+
+SQL> select distinct job_id from employees;
+
+JOB_ID                                                                          
+----------                                                                      
+AC_ACCOUNT                                                                      
+AC_MGR                                                                          
+AD_ASST                                                                         
+AD_PRES                                                                         
+AD_VP                                                                           
+FI_ACCOUNT                                                                      
+FI_MGR                                                                          
+HR_REP                                                                          
+IT_PROG                                                                         
+MK_MAN                                                                          
+MK_REP                                                                          
+
+JOB_ID                                                                          
+----------                                                                      
+PR_REP                                                                          
+PU_CLERK                                                                        
+PU_MAN                                                                          
+SA_MAN                                                                          
+SA_REP                                                                          
+SH_CLERK                                                                        
+ST_CLERK                                                                        
+ST_MAN                                                                          
+
+19 rows selected.
+
+SQL> select employee_id "emp #",last_name "employee",job_id "job",hire_date "Hire Date" from employees;
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       100 King                      AD_PRES    17-JUN-03                       
+       101 Kochhar                   AD_VP      21-SEP-05                       
+       102 De Haan                   AD_VP      13-JAN-01                       
+       103 Hunold                    IT_PROG    03-JAN-06                       
+       104 Ernst                     IT_PROG    21-MAY-07                       
+       105 Austin                    IT_PROG    25-JUN-05                       
+       106 Pataballa                 IT_PROG    05-FEB-06                       
+       107 Lorentz                   IT_PROG    07-FEB-07                       
+       108 Greenberg                 FI_MGR     17-AUG-02                       
+       109 Faviet                    FI_ACCOUNT 16-AUG-02                       
+       110 Chen                      FI_ACCOUNT 28-SEP-05                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       111 Sciarra                   FI_ACCOUNT 30-SEP-05                       
+       112 Urman                     FI_ACCOUNT 07-MAR-06                       
+       113 Popp                      FI_ACCOUNT 07-DEC-07                       
+       114 Raphaely                  PU_MAN     07-DEC-02                       
+       115 Khoo                      PU_CLERK   18-MAY-03                       
+       116 Baida                     PU_CLERK   24-DEC-05                       
+       117 Tobias                    PU_CLERK   24-JUL-05                       
+       118 Himuro                    PU_CLERK   15-NOV-06                       
+       119 Colmenares                PU_CLERK   10-AUG-07                       
+       120 Weiss                     ST_MAN     18-JUL-04                       
+       121 Fripp                     ST_MAN     10-APR-05                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       122 Kaufling                  ST_MAN     01-MAY-03                       
+       123 Vollman                   ST_MAN     10-OCT-05                       
+       124 Mourgos                   ST_MAN     16-NOV-07                       
+       125 Nayer                     ST_CLERK   16-JUL-05                       
+       126 Mikkilineni               ST_CLERK   28-SEP-06                       
+       127 Landry                    ST_CLERK   14-JAN-07                       
+       128 Markle                    ST_CLERK   08-MAR-08                       
+       129 Bissot                    ST_CLERK   20-AUG-05                       
+       130 Atkinson                  ST_CLERK   30-OCT-05                       
+       131 Marlow                    ST_CLERK   16-FEB-05                       
+       132 Olson                     ST_CLERK   10-APR-07                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       133 Mallin                    ST_CLERK   14-JUN-04                       
+       134 Rogers                    ST_CLERK   26-AUG-06                       
+       135 Gee                       ST_CLERK   12-DEC-07                       
+       136 Philtanker                ST_CLERK   06-FEB-08                       
+       137 Ladwig                    ST_CLERK   14-JUL-03                       
+       138 Stiles                    ST_CLERK   26-OCT-05                       
+       139 Seo                       ST_CLERK   12-FEB-06                       
+       140 Patel                     ST_CLERK   06-APR-06                       
+       141 Rajs                      ST_CLERK   17-OCT-03                       
+       142 Davies                    ST_CLERK   29-JAN-05                       
+       143 Matos                     ST_CLERK   15-MAR-06                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       144 Vargas                    ST_CLERK   09-JUL-06                       
+       145 Russell                   SA_MAN     01-OCT-04                       
+       146 Partners                  SA_MAN     05-JAN-05                       
+       147 Errazuriz                 SA_MAN     10-MAR-05                       
+       148 Cambrault                 SA_MAN     15-OCT-07                       
+       149 Zlotkey                   SA_MAN     29-JAN-08                       
+       150 Tucker                    SA_REP     30-JAN-05                       
+       151 Bernstein                 SA_REP     24-MAR-05                       
+       152 Hall                      SA_REP     20-AUG-05                       
+       153 Olsen                     SA_REP     30-MAR-06                       
+       154 Cambrault                 SA_REP     09-DEC-06                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       155 Tuvault                   SA_REP     23-NOV-07                       
+       156 King                      SA_REP     30-JAN-04                       
+       157 Sully                     SA_REP     04-MAR-04                       
+       158 McEwen                    SA_REP     01-AUG-04                       
+       159 Smith                     SA_REP     10-MAR-05                       
+       160 Doran                     SA_REP     15-DEC-05                       
+       161 Sewall                    SA_REP     03-NOV-06                       
+       162 Vishney                   SA_REP     11-NOV-05                       
+       163 Greene                    SA_REP     19-MAR-07                       
+       164 Marvins                   SA_REP     24-JAN-08                       
+       165 Lee                       SA_REP     23-FEB-08                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       166 Ande                      SA_REP     24-MAR-08                       
+       167 Banda                     SA_REP     21-APR-08                       
+       168 Ozer                      SA_REP     11-MAR-05                       
+       169 Bloom                     SA_REP     23-MAR-06                       
+       170 Fox                       SA_REP     24-JAN-06                       
+       171 Smith                     SA_REP     23-FEB-07                       
+       172 Bates                     SA_REP     24-MAR-07                       
+       173 Kumar                     SA_REP     21-APR-08                       
+       174 Abel                      SA_REP     11-MAY-04                       
+       175 Hutton                    SA_REP     19-MAR-05                       
+       176 Taylor                    SA_REP     24-MAR-06                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       177 Livingston                SA_REP     23-APR-06                       
+       178 Grant                     SA_REP     24-MAY-07                       
+       179 Johnson                   SA_REP     04-JAN-08                       
+       180 Taylor                    SH_CLERK   24-JAN-06                       
+       181 Fleaur                    SH_CLERK   23-FEB-06                       
+       182 Sullivan                  SH_CLERK   21-JUN-07                       
+       183 Geoni                     SH_CLERK   03-FEB-08                       
+       184 Sarchand                  SH_CLERK   27-JAN-04                       
+       185 Bull                      SH_CLERK   20-FEB-05                       
+       186 Dellinger                 SH_CLERK   24-JUN-06                       
+       187 Cabrio                    SH_CLERK   07-FEB-07                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       188 Chung                     SH_CLERK   14-JUN-05                       
+       189 Dilly                     SH_CLERK   13-AUG-05                       
+       190 Gates                     SH_CLERK   11-JUL-06                       
+       191 Perkins                   SH_CLERK   19-DEC-07                       
+       192 Bell                      SH_CLERK   04-FEB-04                       
+       193 Everett                   SH_CLERK   03-MAR-05                       
+       194 McCain                    SH_CLERK   01-JUL-06                       
+       195 Jones                     SH_CLERK   17-MAR-07                       
+       196 Walsh                     SH_CLERK   24-APR-06                       
+       197 Feeney                    SH_CLERK   23-MAY-06                       
+       198 OConnell                  SH_CLERK   21-JUN-07                       
+
+     emp # employee                  job        Hire Date                       
+---------- ------------------------- ---------- ---------                       
+       199 Grant                     SH_CLERK   13-JAN-08                       
+       200 Whalen                    AD_ASST    17-SEP-03                       
+       201 Hartstein                 MK_MAN     17-FEB-04                       
+       202 Fay                       MK_REP     17-AUG-05                       
+       203 Mavris                    HR_REP     07-JUN-02                       
+       204 Baer                      PR_REP     07-JUN-02                       
+       205 Higgins                   AC_MGR     07-JUN-02                       
+       206 Gietz                     AC_ACCOUNT 07-JUN-02                       
+       207 appppa                    AC_ACCOUNT 26-JUL-18                       
+
+108 rows selected.
+
+SQL> select last_name || ', ' || job_id "employee and title" from employees;
+
+employee and title                                                              
+-------------------------------------                                           
+Abel, SA_REP                                                                    
+Ande, SA_REP                                                                    
+Atkinson, ST_CLERK                                                              
+Austin, IT_PROG                                                                 
+Baer, PR_REP                                                                    
+Baida, PU_CLERK                                                                 
+Banda, SA_REP                                                                   
+Bates, SA_REP                                                                   
+Bell, SH_CLERK                                                                  
+Bernstein, SA_REP                                                               
+Bissot, ST_CLERK                                                                
+
+employee and title                                                              
+-------------------------------------                                           
+Bloom, SA_REP                                                                   
+Bull, SH_CLERK                                                                  
+Cabrio, SH_CLERK                                                                
+Cambrault, SA_MAN                                                               
+Cambrault, SA_REP                                                               
+Chen, FI_ACCOUNT                                                                
+Chung, SH_CLERK                                                                 
+Colmenares, PU_CLERK                                                            
+Davies, ST_CLERK                                                                
+De Haan, AD_VP                                                                  
+Dellinger, SH_CLERK                                                             
+
+employee and title                                                              
+-------------------------------------                                           
+Dilly, SH_CLERK                                                                 
+Doran, SA_REP                                                                   
+Ernst, IT_PROG                                                                  
+Errazuriz, SA_MAN                                                               
+Everett, SH_CLERK                                                               
+Faviet, FI_ACCOUNT                                                              
+Fay, MK_REP                                                                     
+Feeney, SH_CLERK                                                                
+Fleaur, SH_CLERK                                                                
+Fox, SA_REP                                                                     
+Fripp, ST_MAN                                                                   
+
+employee and title                                                              
+-------------------------------------                                           
+Gates, SH_CLERK                                                                 
+Gee, ST_CLERK                                                                   
+Geoni, SH_CLERK                                                                 
+Gietz, AC_ACCOUNT                                                               
+Grant, SH_CLERK                                                                 
+Grant, SA_REP                                                                   
+Greenberg, FI_MGR                                                               
+Greene, SA_REP                                                                  
+Hall, SA_REP                                                                    
+Hartstein, MK_MAN                                                               
+Higgins, AC_MGR                                                                 
+
+employee and title                                                              
+-------------------------------------                                           
+Himuro, PU_CLERK                                                                
+Hunold, IT_PROG                                                                 
+Hutton, SA_REP                                                                  
+Johnson, SA_REP                                                                 
+Jones, SH_CLERK                                                                 
+Kaufling, ST_MAN                                                                
+Khoo, PU_CLERK                                                                  
+King, SA_REP                                                                    
+King, AD_PRES                                                                   
+Kochhar, AD_VP                                                                  
+Kumar, SA_REP                                                                   
+
+employee and title                                                              
+-------------------------------------                                           
+Ladwig, ST_CLERK                                                                
+Landry, ST_CLERK                                                                
+Lee, SA_REP                                                                     
+Livingston, SA_REP                                                              
+Lorentz, IT_PROG                                                                
+Mallin, ST_CLERK                                                                
+Markle, ST_CLERK                                                                
+Marlow, ST_CLERK                                                                
+Marvins, SA_REP                                                                 
+Matos, ST_CLERK                                                                 
+Mavris, HR_REP                                                                  
+
+employee and title                                                              
+-------------------------------------                                           
+McCain, SH_CLERK                                                                
+McEwen, SA_REP                                                                  
+Mikkilineni, ST_CLERK                                                           
+Mourgos, ST_MAN                                                                 
+Nayer, ST_CLERK                                                                 
+OConnell, SH_CLERK                                                              
+Olsen, SA_REP                                                                   
+Olson, ST_CLERK                                                                 
+Ozer, SA_REP                                                                    
+Partners, SA_MAN                                                                
+Pataballa, IT_PROG                                                              
+
+employee and title                                                              
+-------------------------------------                                           
+Patel, ST_CLERK                                                                 
+Perkins, SH_CLERK                                                               
+Philtanker, ST_CLERK                                                            
+Popp, FI_ACCOUNT                                                                
+Rajs, ST_CLERK                                                                  
+Raphaely, PU_MAN                                                                
+Rogers, ST_CLERK                                                                
+Russell, SA_MAN                                                                 
+Sarchand, SH_CLERK                                                              
+Sciarra, FI_ACCOUNT                                                             
+Seo, ST_CLERK                                                                   
+
+employee and title                                                              
+-------------------------------------                                           
+Sewall, SA_REP                                                                  
+Smith, SA_REP                                                                   
+Smith, SA_REP                                                                   
+Stiles, ST_CLERK                                                                
+Sullivan, SH_CLERK                                                              
+Sully, SA_REP                                                                   
+Taylor, SA_REP                                                                  
+Taylor, SH_CLERK                                                                
+Tobias, PU_CLERK                                                                
+Tucker, SA_REP                                                                  
+Tuvault, SA_REP                                                                 
+
+employee and title                                                              
+-------------------------------------                                           
+Urman, FI_ACCOUNT                                                               
+Vargas, ST_CLERK                                                                
+Vishney, SA_REP                                                                 
+Vollman, ST_MAN                                                                 
+Walsh, SH_CLERK                                                                 
+Weiss, ST_MAN                                                                   
+Whalen, AD_ASST                                                                 
+Zlotkey, SA_MAN                                                                 
+appppa, AC_ACCOUNT                                                              
+
+108 rows selected.
+
+SQL> select employee_id ||','|| first_name  ||','|| last_name  ||','|| email  ||','|| phone_number  ||','|| job_id  ||','|| manage_id  ||','|| hire_date  ||','|| salary  ||','|| commission_pct  ||','|| department_id The_OUTPUT from employees;
+select employee_id ||','|| first_name  ||','|| last_name  ||','|| email  ||','|| phone_number  ||','|| job_id  ||','|| manage_id  ||','|| hire_date  ||','|| salary  ||','|| commission_pct  ||','|| department_id The_OUTPUT from employees
+                                                                                                                       *
+ERROR at line 1:
+ORA-00904: "MANAGE_ID": invalid identifier 
+
+
+SQL> select employee_id ||','|| first_name  ||','|| last_name  ||','|| email  ||','|| phone_number  ||','|| job_id  ||','|| manager_id  ||','|| hire_date  ||','|| salary  ||','|| commission_pct  ||','|| department_id The_OUTPUT from employees;
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+100,Steven,King,SKING,515.123.4567,AD_PRES,,17-JUN-03,24000,,90                 
+101,Neena,Kochhar,NKOCHHAR,515.123.4568,AD_VP,100,21-SEP-05,17000,,90           
+102,Lex,De Haan,LDEHAAN,515.123.4569,AD_VP,100,13-JAN-01,17000,,90              
+103,Alexander,Hunold,AHUNOLD,590.423.4567,IT_PROG,102,03-JAN-06,9000,,60        
+104,Bruce,Ernst,BERNST,590.423.4568,IT_PROG,103,21-MAY-07,6000,,60              
+105,David,Austin,DAUSTIN,590.423.4569,IT_PROG,103,25-JUN-05,4800,,60            
+106,Valli,Pataballa,VPATABAL,590.423.4560,IT_PROG,103,05-FEB-06,4800,,60        
+107,Diana,Lorentz,DLORENTZ,590.423.5567,IT_PROG,103,07-FEB-07,4200,,60          
+108,Nancy,Greenberg,NGREENBE,515.124.4569,FI_MGR,101,17-AUG-02,12008,,100       
+109,Daniel,Faviet,DFAVIET,515.124.4169,FI_ACCOUNT,108,16-AUG-02,9000,,100       
+110,John,Chen,JCHEN,515.124.4269,FI_ACCOUNT,108,28-SEP-05,8200,,100             
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+111,Ismael,Sciarra,ISCIARRA,515.124.4369,FI_ACCOUNT,108,30-SEP-05,7700,,100     
+112,Jose Manuel,Urman,JMURMAN,515.124.4469,FI_ACCOUNT,108,07-MAR-06,7800,,100   
+113,Luis,Popp,LPOPP,515.124.4567,FI_ACCOUNT,108,07-DEC-07,6900,,100             
+114,Den,Raphaely,DRAPHEAL,515.127.4561,PU_MAN,100,07-DEC-02,11000,,30           
+115,Alexander,Khoo,AKHOO,515.127.4562,PU_CLERK,114,18-MAY-03,3100,,30           
+116,Shelli,Baida,SBAIDA,515.127.4563,PU_CLERK,114,24-DEC-05,2900,,30            
+117,Sigal,Tobias,STOBIAS,515.127.4564,PU_CLERK,114,24-JUL-05,2800,,30           
+118,Guy,Himuro,GHIMURO,515.127.4565,PU_CLERK,114,15-NOV-06,2600,,30             
+119,Karen,Colmenares,KCOLMENA,515.127.4566,PU_CLERK,114,10-AUG-07,2500,,30      
+120,Matthew,Weiss,MWEISS,650.123.1234,ST_MAN,100,18-JUL-04,8000,,50             
+121,Adam,Fripp,AFRIPP,650.123.2234,ST_MAN,100,10-APR-05,8200,,50                
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+122,Payam,Kaufling,PKAUFLIN,650.123.3234,ST_MAN,100,01-MAY-03,7900,,50          
+123,Shanta,Vollman,SVOLLMAN,650.123.4234,ST_MAN,100,10-OCT-05,6500,,50          
+124,Kevin,Mourgos,KMOURGOS,650.123.5234,ST_MAN,100,16-NOV-07,5800,,50           
+125,Julia,Nayer,JNAYER,650.124.1214,ST_CLERK,120,16-JUL-05,3200,,50             
+126,Irene,Mikkilineni,IMIKKILI,650.124.1224,ST_CLERK,120,28-SEP-06,2700,,50     
+127,James,Landry,JLANDRY,650.124.1334,ST_CLERK,120,14-JAN-07,2400,,50           
+128,Steven,Markle,SMARKLE,650.124.1434,ST_CLERK,120,08-MAR-08,2200,,50          
+129,Laura,Bissot,LBISSOT,650.124.5234,ST_CLERK,121,20-AUG-05,3300,,50           
+130,Mozhe,Atkinson,MATKINSO,650.124.6234,ST_CLERK,121,30-OCT-05,2800,,50        
+131,James,Marlow,JAMRLOW,650.124.7234,ST_CLERK,121,16-FEB-05,2500,,50           
+132,TJ,Olson,TJOLSON,650.124.8234,ST_CLERK,121,10-APR-07,2100,,50               
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+133,Jason,Mallin,JMALLIN,650.127.1934,ST_CLERK,122,14-JUN-04,3300,,50           
+134,Michael,Rogers,MROGERS,650.127.1834,ST_CLERK,122,26-AUG-06,2900,,50         
+135,Ki,Gee,KGEE,650.127.1734,ST_CLERK,122,12-DEC-07,2400,,50                    
+136,Hazel,Philtanker,HPHILTAN,650.127.1634,ST_CLERK,122,06-FEB-08,2200,,50      
+137,Renske,Ladwig,RLADWIG,650.121.1234,ST_CLERK,123,14-JUL-03,3600,,50          
+138,Stephen,Stiles,SSTILES,650.121.2034,ST_CLERK,123,26-OCT-05,3200,,50         
+139,John,Seo,JSEO,650.121.2019,ST_CLERK,123,12-FEB-06,2700,,50                  
+140,Joshua,Patel,JPATEL,650.121.1834,ST_CLERK,123,06-APR-06,2500,,50            
+141,Trenna,Rajs,TRAJS,650.121.8009,ST_CLERK,124,17-OCT-03,3500,,50              
+142,Curtis,Davies,CDAVIES,650.121.2994,ST_CLERK,124,29-JAN-05,3100,,50          
+143,Randall,Matos,RMATOS,650.121.2874,ST_CLERK,124,15-MAR-06,2600,,50           
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+144,Peter,Vargas,PVARGAS,650.121.2004,ST_CLERK,124,09-JUL-06,2500,,50           
+145,John,Russell,JRUSSEL,011.44.1344.429268,SA_MAN,100,01-OCT-04,14000,.4,80    
+146,Karen,Partners,KPARTNER,011.44.1344.467268,SA_MAN,100,05-JAN-05,13500,.3,80 
+147,Alberto,Errazuriz,AERRAZUR,011.44.1344.429278,SA_MAN,100,10-MAR-05,12000,.3,
+80                                                                              
+                                                                                
+148,Gerald,Cambrault,GCAMBRAU,011.44.1344.619268,SA_MAN,100,15-OCT-07,11000,.3,8
+0                                                                               
+                                                                                
+149,Eleni,Zlotkey,EZLOTKEY,011.44.1344.429018,SA_MAN,100,29-JAN-08,10500,.2,80  
+150,Peter,Tucker,PTUCKER,011.44.1344.129268,SA_REP,145,30-JAN-05,10000,.3,80    
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+151,David,Bernstein,DBERNSTE,011.44.1344.345268,SA_REP,145,24-MAR-05,9500,.25,80
+152,Peter,Hall,PHALL,011.44.1344.478968,SA_REP,145,20-AUG-05,9000,.25,80        
+153,Christopher,Olsen,COLSEN,011.44.1344.498718,SA_REP,145,30-MAR-06,8000,.2,80 
+154,Nanette,Cambrault,NCAMBRAU,011.44.1344.987668,SA_REP,145,09-DEC-06,7500,.2,8
+0                                                                               
+                                                                                
+155,Oliver,Tuvault,OTUVAULT,011.44.1344.486508,SA_REP,145,23-NOV-07,7000,.15,80 
+156,Janette,King,JKING,011.44.1345.429268,SA_REP,146,30-JAN-04,10000,.35,80     
+157,Patrick,Sully,PSULLY,011.44.1345.929268,SA_REP,146,04-MAR-04,9500,.35,80    
+158,Allan,McEwen,AMCEWEN,011.44.1345.829268,SA_REP,146,01-AUG-04,9000,.35,80    
+159,Lindsey,Smith,LSMITH,011.44.1345.729268,SA_REP,146,10-MAR-05,8000,.3,80     
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+160,Louise,Doran,LDORAN,011.44.1345.629268,SA_REP,146,15-DEC-05,7500,.3,80      
+161,Sarath,Sewall,SSEWALL,011.44.1345.529268,SA_REP,146,03-NOV-06,7000,.25,80   
+162,Clara,Vishney,CVISHNEY,011.44.1346.129268,SA_REP,147,11-NOV-05,10500,.25,80 
+163,Danielle,Greene,DGREENE,011.44.1346.229268,SA_REP,147,19-MAR-07,9500,.15,80 
+164,Mattea,Marvins,MMARVINS,011.44.1346.329268,SA_REP,147,24-JAN-08,7200,.1,80  
+165,David,Lee,DLEE,011.44.1346.529268,SA_REP,147,23-FEB-08,6800,.1,80           
+166,Sundar,Ande,SANDE,011.44.1346.629268,SA_REP,147,24-MAR-08,6400,.1,80        
+167,Amit,Banda,ABANDA,011.44.1346.729268,SA_REP,147,21-APR-08,6200,.1,80        
+168,Lisa,Ozer,LOZER,011.44.1343.929268,SA_REP,148,11-MAR-05,11500,.25,80        
+169,Harrison,Bloom,HBLOOM,011.44.1343.829268,SA_REP,148,23-MAR-06,10000,.2,80   
+170,Tayler,Fox,TFOX,011.44.1343.729268,SA_REP,148,24-JAN-06,9600,.2,80          
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+171,William,Smith,WSMITH,011.44.1343.629268,SA_REP,148,23-FEB-07,7400,.15,80    
+172,Elizabeth,Bates,EBATES,011.44.1343.529268,SA_REP,148,24-MAR-07,7300,.15,80  
+173,Sundita,Kumar,SKUMAR,011.44.1343.329268,SA_REP,148,21-APR-08,6100,.1,80     
+174,Ellen,Abel,EABEL,011.44.1644.429267,SA_REP,149,11-MAY-04,11000,.3,80        
+175,Alyssa,Hutton,AHUTTON,011.44.1644.429266,SA_REP,149,19-MAR-05,8800,.25,80   
+176,Jonathon,Taylor,JTAYLOR,011.44.1644.429265,SA_REP,149,24-MAR-06,8600,.2,80  
+177,Jack,Livingston,JLIVINGS,011.44.1644.429264,SA_REP,149,23-APR-06,8400,.2,80 
+178,Kimberely,Grant,KGRANT,011.44.1644.429263,SA_REP,149,24-MAY-07,7000,.15,    
+179,Charles,Johnson,CJOHNSON,011.44.1644.429262,SA_REP,149,04-JAN-08,6200,.1,80 
+180,Winston,Taylor,WTAYLOR,650.507.9876,SH_CLERK,120,24-JAN-06,3200,,50         
+181,Jean,Fleaur,JFLEAUR,650.507.9877,SH_CLERK,120,23-FEB-06,3100,,50            
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+182,Martha,Sullivan,MSULLIVA,650.507.9878,SH_CLERK,120,21-JUN-07,2500,,50       
+183,Girard,Geoni,GGEONI,650.507.9879,SH_CLERK,120,03-FEB-08,2800,,50            
+184,Nandita,Sarchand,NSARCHAN,650.509.1876,SH_CLERK,121,27-JAN-04,4200,,50      
+185,Alexis,Bull,ABULL,650.509.2876,SH_CLERK,121,20-FEB-05,4100,,50              
+186,Julia,Dellinger,JDELLING,650.509.3876,SH_CLERK,121,24-JUN-06,3400,,50       
+187,Anthony,Cabrio,ACABRIO,650.509.4876,SH_CLERK,121,07-FEB-07,3000,,50         
+188,Kelly,Chung,KCHUNG,650.505.1876,SH_CLERK,122,14-JUN-05,3800,,50             
+189,Jennifer,Dilly,JDILLY,650.505.2876,SH_CLERK,122,13-AUG-05,3600,,50          
+190,Timothy,Gates,TGATES,650.505.3876,SH_CLERK,122,11-JUL-06,2900,,50           
+191,Randall,Perkins,RPERKINS,650.505.4876,SH_CLERK,122,19-DEC-07,2500,,50       
+192,Sarah,Bell,SBELL,650.501.1876,SH_CLERK,123,04-FEB-04,4000,,50               
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+193,Britney,Everett,BEVERETT,650.501.2876,SH_CLERK,123,03-MAR-05,3900,,50       
+194,Samuel,McCain,SMCCAIN,650.501.3876,SH_CLERK,123,01-JUL-06,3200,,50          
+195,Vance,Jones,VJONES,650.501.4876,SH_CLERK,123,17-MAR-07,2800,,50             
+196,Alana,Walsh,AWALSH,650.507.9811,SH_CLERK,124,24-APR-06,3100,,50             
+197,Kevin,Feeney,KFEENEY,650.507.9822,SH_CLERK,124,23-MAY-06,3000,,50           
+198,Donald,OConnell,DOCONNEL,650.507.9833,SH_CLERK,124,21-JUN-07,2600,,50       
+199,Douglas,Grant,DGRANT,650.507.9844,SH_CLERK,124,13-JAN-08,2600,,50           
+200,Jennifer,Whalen,JWHALEN,515.123.4444,AD_ASST,101,17-SEP-03,4400,,10         
+201,Michael,Hartstein,MHARTSTE,515.123.5555,MK_MAN,100,17-FEB-04,13000,,20      
+202,Pat,Fay,PFAY,603.123.6666,MK_REP,201,17-AUG-05,6000,,20                     
+203,Susan,Mavris,SMAVRIS,515.123.7777,HR_REP,101,07-JUN-02,6500,,40             
+
+THE_OUTPUT                                                                      
+--------------------------------------------------------------------------------
+204,Hermann,Baer,HBAER,515.123.8888,PR_REP,101,07-JUN-02,10000,,70              
+205,Shelley,Higgins,SHIGGINS,515.123.8080,AC_MGR,101,07-JUN-02,12008,,110       
+206,William,Gietz,WGIETZ,515.123.8181,AC_ACCOUNT,205,07-JUN-02,8300,,110        
+207,woly,appppa,moly.woly@gmail.com,01718497683,AC_ACCOUNT,205,26-JUL-18,90000,.
+3,50                                                                            
+                                                                                
+
+108 rows selected.
+
+SQL> select last_name ,salary
+  2  from employees
+  3  where salary > 12000;
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+King                           24000                                            
+Kochhar                        17000                                            
+De Haan                        17000                                            
+Greenberg                      12008                                            
+Russell                        14000                                            
+Partners                       13500                                            
+Hartstein                      13000                                            
+Higgins                        12008                                            
+appppa                         90000                                            
+
+9 rows selected.
+
+SQL> select last_name,department_id fro employees where employee_id =176;
+select last_name,department_id fro employees where employee_id =176
+                                   *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select last_name,department_id from employees where employee_id =176;
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Taylor                               80                                         
+
+SQL> select last_name,salary from employees from employees where salary not between 5000 and 12000;
+select last_name,salary from employees from employees where salary not between 5000 and 12000
+                                       *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> select last_name,salary from employees where salary not between 5000 and 12000;
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+King                           24000                                            
+Kochhar                        17000                                            
+De Haan                        17000                                            
+Austin                          4800                                            
+Pataballa                       4800                                            
+Lorentz                         4200                                            
+Greenberg                      12008                                            
+Khoo                            3100                                            
+Baida                           2900                                            
+Tobias                          2800                                            
+Himuro                          2600                                            
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+Colmenares                      2500                                            
+Nayer                           3200                                            
+Mikkilineni                     2700                                            
+Landry                          2400                                            
+Markle                          2200                                            
+Bissot                          3300                                            
+Atkinson                        2800                                            
+Marlow                          2500                                            
+Olson                           2100                                            
+Mallin                          3300                                            
+Rogers                          2900                                            
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+Gee                             2400                                            
+Philtanker                      2200                                            
+Ladwig                          3600                                            
+Stiles                          3200                                            
+Seo                             2700                                            
+Patel                           2500                                            
+Rajs                            3500                                            
+Davies                          3100                                            
+Matos                           2600                                            
+Vargas                          2500                                            
+Russell                        14000                                            
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+Partners                       13500                                            
+Taylor                          3200                                            
+Fleaur                          3100                                            
+Sullivan                        2500                                            
+Geoni                           2800                                            
+Sarchand                        4200                                            
+Bull                            4100                                            
+Dellinger                       3400                                            
+Cabrio                          3000                                            
+Chung                           3800                                            
+Dilly                           3600                                            
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+Gates                           2900                                            
+Perkins                         2500                                            
+Bell                            4000                                            
+Everett                         3900                                            
+McCain                          3200                                            
+Jones                           2800                                            
+Walsh                           3100                                            
+Feeney                          3000                                            
+OConnell                        2600                                            
+Grant                           2600                                            
+Whalen                          4400                                            
+
+LAST_NAME                     SALARY                                            
+------------------------- ----------                                            
+Hartstein                      13000                                            
+Higgins                        12008                                            
+appppa                         90000                                            
+
+58 rows selected.
+
+SQL> select last_name,job_id,hire_date from employees where last_name in ('matos','taylor') order by hire_date;
+
+no rows selected
+
+SQL> select last_name,job_id,hire_date from employees where last_name in ('Matos','Taylor') order by hire_date;
+
+LAST_NAME                 JOB_ID     HIRE_DATE                                  
+------------------------- ---------- ---------                                  
+Taylor                    SH_CLERK   24-JAN-06                                  
+Matos                     ST_CLERK   15-MAR-06                                  
+Taylor                    SA_REP     24-MAR-06                                  
+
+SQL> select last_name,department_id from employees where department_id in (20,50) order by last_name ASC;
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Atkinson                             50                                         
+Bell                                 50                                         
+Bissot                               50                                         
+Bull                                 50                                         
+Cabrio                               50                                         
+Chung                                50                                         
+Davies                               50                                         
+Dellinger                            50                                         
+Dilly                                50                                         
+Everett                              50                                         
+Fay                                  20                                         
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Feeney                               50                                         
+Fleaur                               50                                         
+Fripp                                50                                         
+Gates                                50                                         
+Gee                                  50                                         
+Geoni                                50                                         
+Grant                                50                                         
+Hartstein                            20                                         
+Jones                                50                                         
+Kaufling                             50                                         
+Ladwig                               50                                         
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Landry                               50                                         
+Mallin                               50                                         
+Markle                               50                                         
+Marlow                               50                                         
+Matos                                50                                         
+McCain                               50                                         
+Mikkilineni                          50                                         
+Mourgos                              50                                         
+Nayer                                50                                         
+OConnell                             50                                         
+Olson                                50                                         
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Patel                                50                                         
+Perkins                              50                                         
+Philtanker                           50                                         
+Rajs                                 50                                         
+Rogers                               50                                         
+Sarchand                             50                                         
+Seo                                  50                                         
+Stiles                               50                                         
+Sullivan                             50                                         
+Taylor                               50                                         
+Vargas                               50                                         
+
+LAST_NAME                 DEPARTMENT_ID                                         
+------------------------- -------------                                         
+Vollman                              50                                         
+Walsh                                50                                         
+Weiss                                50                                         
+appppa                               50                                         
+
+48 rows selected.
+
+SQL> spool off;

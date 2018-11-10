@@ -1,0 +1,135 @@
+SQL> connect sys as sysdba;
+Connected.
+SQL> create user day2 identified by sys;
+
+User created.
+
+SQL> grant dba to day2;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: day2
+Connected.
+SQL> create table customer(id number(2) primary key,name varchar2(7),payment number(7,2) check(payment>500));
+
+Table created.
+
+SQL> create table customer_backup as select * from customer;
+
+Table created.
+
+SQL> create or replace trigger cus_ins_aft after insert on customer for each row
+  2  declare
+  3  begin
+  4  insert into customer_backup values(:new.id, :new.name, :new.payment);
+  5  dbms_output.put_line('done');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create sequence seq_cus
+  2  increment by 2
+  3  start with 0
+  4  maxvalue 99
+  5  nocache
+  6  nocycle;
+create sequence seq_cus
+*
+ERROR at line 1:
+ORA-04006: START WITH cannot be less than MINVALUE 
+
+
+SQL> create sequence seq_cus
+  2  increment by 2
+  3  start with 1
+  4  maxvalue 99
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+SQL> insert into customer(id,name,payment) values(seq_cus.nextval,'ami',1500);
+
+1 row created.
+
+SQL> select * from customer;
+
+        ID NAME       PAYMENT                                                   
+---------- ------- ----------                                                   
+         1 ami           1500                                                   
+
+SQL> select * from customer_backup;
+
+        ID NAME       PAYMENT                                                   
+---------- ------- ----------                                                   
+         1 ami           1500                                                   
+
+SQL> create or replace procedure p_in_customer(
+  2  p_id in customer.id%type,
+  3  P_name in customer.name%type,
+  4  p_payment in customer.payment%type)
+  5  is
+  6  begin
+  7  insert into(id,name,payment) values(p_id,p_name,p_payment);
+  8  end;
+  9  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure p_in_customer(
+  2  p_id in customer.id%type,
+  3  P_name in customer.name%type,
+  4  p_payment in customer.payment%type)
+  5  is
+  6  begin
+  7  insert into customer(id,name,payment) values(p_id,p_name,p_payment);
+  8  end;
+  9  /
+
+Procedure created.
+
+SQL> insert into p_in_customer(seq_cus.nextval,'tumi',1300);
+insert into p_in_customer(seq_cus.nextval,'tumi',1300)
+                                          *
+ERROR at line 1:
+ORA-01747: invalid user.table.column, table.column, or column specification 
+
+
+SQL> begin
+  2  insert into p_in_customer(seq_cus.nextval,'tumi',1300);
+  3  end;
+  4  /
+insert into p_in_customer(seq_cus.nextval,'tumi',1300);
+                                          *
+ERROR at line 2:
+ORA-06550: line 2, column 43: 
+PL/SQL: ORA-01747: invalid user.table.column, table.column, or column 
+specification 
+ORA-06550: line 2, column 1: 
+PL/SQL: SQL Statement ignored 
+
+
+SQL> begin
+  2  p_in_customer(seq_cus.nextval,'tumi',1300);
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from customer;
+
+        ID NAME       PAYMENT                                                   
+---------- ------- ----------                                                   
+         1 ami           1500                                                   
+         3 tumi          1300                                                   
+
+SQL> select * from customer_backup;
+
+        ID NAME       PAYMENT                                                   
+---------- ------- ----------                                                   
+         1 ami           1500                                                   
+         3 tumi          1300                                                   
+
+SQL> spool off;

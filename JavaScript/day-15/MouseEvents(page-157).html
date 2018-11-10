@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+body {
+	background-color:#33C ;
+	font-family:Verdana ;	
+}
+h2 {
+	font-size:24pt;
+	color: #0CF;
+	font-weight:bold;
+}
+
+a {
+	color: #C9C;
+	font-weight:bold;}	
+}
+</style>
+
+<script>
+function helpMe(){
+alert('Help has arrived.\n-------------------\n 1.Turn on your monitor.\n2.Look at the monitor.\n3.Follow instructions.');
+}
+</script>
+</head>
+
+<body onDblClick="helpMe(0";>
+<h2>follow the instruction:<br>(Or double-click to get help.)</h2>
+<ul>
+<a href="place.html" onMouseOver="alert('As you move over the spot.');">
+onMouseOver </a><p>
+<a href="place2.html" onMouseUp="alert('you have to press down to get up';)">
+onMouseUp </a><p>
+<a href="place3.html" onMouseDown="alert('you can keep it down.');">
+onMouseDown </a><p>
+<a href="place4.html" onClick="alert('Any click will do');">
+<a href="place5.html" onMouseOut="alert('First move over and then off');">
+onMouseOut</a><p>
+<form>
+<input type="button" value="onMouseMove" onMouseMove="alert('press enter or return--don\'t move the mouse!')"><p>
+</form>
+</ul>
+</body>
+</html>

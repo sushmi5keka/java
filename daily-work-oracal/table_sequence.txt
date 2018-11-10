@@ -1,0 +1,155 @@
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> create user rasia identified by sys
+  2
+SQL> create user rasia identified by sys;
+
+User created.
+
+SQL> grant dba to rasia;
+
+Grant succeeded.
+
+SQL> create table department(Dep_id number(3) primary key,Dep_name varchar2(15) not null);
+
+Table created.
+
+
+SQL> create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,salary number(7,2) check(salary<500000),mobileNo number(11) unique,department_id number(3),constraint dep_fk foreign key(department_id) references department(Dep_id));
+
+Table created.
+
+SQL> create sequence dep_sequ
+  2  increment by 10
+  3  start with 50
+  4  maxvalue 100
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+SQL> create sequence emp_sequ
+  2  increment by 5
+  3  start with 1
+  4  maxvalue 200
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+
+SQL> insert into  department(Dep_id,Dep_name) values(dep_sequ.nextval,'Marketing');
+
+1 row created.
+
+SQL> insert into  department(Dep_id,Dep_name) values(dep_sequ.nextval,'Management');
+
+1 row created.
+
+SQL> insert into  department(Dep_id,Dep_name) values(dep_sequ.nextval,'Accounting');
+
+1 row created.
+
+SQL> insert into  department(Dep_id,Dep_name) values(dep_sequ.nextval,'Finance');
+
+1 row created.
+
+SQL> insert into  department(Dep_id,Dep_name) values(dep_sequ.nextval,'Economices');
+
+1 row created.
+
+
+SQL> select * from employee where emp_id=100;
+
+    EMP_ID EMP_NAME            SALARY   MOBILENO DEPARTMENT_ID
+---------- --------------- ---------- ---------- -------------
+       100 moly                 40000        111            60
+
+SQL> delete from employee where emp_id=100;
+
+1 row deleted.
+
+SQL> select * from employee;
+
+no rows selected
+
+SQL> insert into  employee(emp_id,emp_name,salary,mobileNo,department_id) values(emp_sequ.nextval,'poly',30000,222,80);
+
+1 row created.
+
+SQL> insert into  employee(emp_id,emp_name,salary,mobileNo,department_id) values(emp_sequ.nextval,'moly',30000,111,60);
+
+1 row created.
+
+SQL> insert into  employee(emp_id,emp_name,salary,mobileNo,department_id) values(emp_sequ.nextval,'joly',70000,333,50);
+
+1 row created.
+
+SQL> insert into  employee(emp_id,emp_name,salary,mobileNo,department_id) values(emp_sequ.nextval,'doly',65000,444,70);
+
+1 row created.
+
+SQL> insert into  employee(emp_id,emp_name,salary,mobileNo,department_id) values(emp_sequ.nextval,'koly',50000,555,60);
+
+1 row created.
+
+SQL> select * from department;
+
+    DEP_ID DEP_NAME
+---------- ---------------
+        50 Marketing
+        60 Management
+        70 Accounting
+        80 Finance
+        90 Economices
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME            SALARY   MOBILENO DEPARTMENT_ID
+---------- --------------- ---------- ---------- -------------
+         1 poly                 30000        222            80
+         6 moly                 30000        111            60
+        11 joly                 70000        333            50
+        16 doly                 65000        444            70
+        21 koly                 50000        555            60
+
+SQL> create view empView as select emp_id,emp_name from employee where department_id=50;
+
+View created.
+
+SQL> select * from empView;
+
+    EMP_ID EMP_NAME
+---------- ---------------
+        11 joly
+
+SQL> update department set dep_name='football' where dep_id=50;
+
+1 row updated.
+
+SQL> update employee set emp_name='rasia' where emp_id=21;
+
+1 row updated.
+
+SQL> select * from department;
+
+    DEP_ID DEP_NAME
+---------- ---------------
+        50 football
+        60 Management
+        70 Accounting
+        80 Finance
+        90 Economices
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME            SALARY   MOBILENO DEPARTMENT_ID
+---------- --------------- ---------- ---------- -------------
+         1 poly                 30000        222            80
+         6 moly                 30000        111            60
+        11 joly                 70000        333            50
+        16 doly                 65000        444            70
+        21 rasia                50000        555            60

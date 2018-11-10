@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form name="myForm" action="valForm.html" onSubmit="return display()" method="post">
+
+Name :
+<input type="text" name="name">
+<label id="name"></label>
+<br/>
+<br/>
+
+Gender :
+<input type="radio" name="gender" value="male">Male
+<input type="radio" name="gender" value="female">Female
+<label id="gender"></label>
+<br/>
+<br/>
+
+Education :
+<input type="checkbox" name="ssc" value="ssc">SSC
+<input type="checkbox" name="hsc" value="hsc">HSC
+<label id="education"></label>
+<br/>
+<br/>
+
+Round :
+<select name="round">
+	<option value="select a round">select a round</option>
+    <option value="round-1">Round-1</option>
+    <option value="round-2">Round-2</option>
+    <option value="round-3">Round-3</option>
+</select>
+<label id="round"></label>
+<br/>
+<br/>
+
+Message :
+<textarea name="msg" cols="5" rows="5"></textarea>
+<label id="msg"></label>
+<br/>
+<br/>
+
+<input type="submit" value="submit">
+<input type="reset" value="reset">
+</form>
+<script>
+function display(){
+	var name=document.forms["myForm"]["name"].value;
+	var gender=document.forms["myForm"]["gender"].value;
+	
+	var education=""
+	if(document.forms["myForm"].ssc.checked){
+	education +=document.forms["myForm"]["ssc"].value+ " , ";
+	}
+	if(document.forms["myForm"].hsc.checked){
+	education +=document.forms["myForm"]["hsc"].value;
+	}
+	
+	var round=document.forms["myForm"]["round"].value;
+	var msg=document.forms["myForm"]["msg"].value;
+	
+	if(name==""){
+		document.getElementById('name').innerHTML="please write your name";
+		return false;
+	}else if (name.length < 3){
+		document.getElementById('name').innerHTML="please write at least 3 charectere";
+		return false;
+		
+	}else if (gender==""){
+		document.getElementById('gender').innerHTML="please select your gender";
+		return false;
+		
+	}else if (!document.forms["myForm"].ssc.checked && !document.forms["myForm"].hsc.checked){
+		document.getElementById('education').innerHTML="please select your education qualification";
+		return false;
+		
+	}else if (round=="select a round"){
+		document.getElementById('round').innerHTML="please select your round";
+		return false;	
+		
+	}else if (msg.length < 5){
+		document.getElementById('msg').innerHTML="please write at least 5 cherecter";
+		return false;	
+		
+	}else{
+		document.write("Name : " + name + "<br/>");
+		document.write("Gender : " + gender + "<br/>");
+		document.write("Education : " + education + "<br/>");
+		document.write("Round : " + round + "<br/>");
+		document.write("Message : " + msg + "<br/>");
+	}
+}
+</script>
+</body>
+</html>

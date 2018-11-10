@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style>
+	body {
+		background-color:	rgb(200,198,159);
+		font-family:Verdana;font-size:11pt
+	}
+	
+	#display {
+		color:rgb(169,33,53);
+		background-color:rgb(249,225,203)}	
+	
+</style>
+<script>
+function yourCookie(name){
+	var remain=new Date("Novembwr 9,2018");
+	document.cookie=escape(name + document.baker.myCookie.value + ";expires=" + remain.toGMTString() + ";" );	
+}
+function welcomeBack(){
+	var seeMe= unescape(document.cookie);
+	var tagIt= seeMe.indexOf(";");
+	seeMe= seeMe.substring(11,tagIt);
+	alert("hello there, " + seeMe)	
+}
+</script>
+</head>
+
+<body onLoad="document.baker.reset()">
+<div ID=display>
+&nbsp;
+<form name="baker">
+&nbsp;
+<input type="text" name="myCookie"><br>
+&nbsp;
+Type in the value for your cookies and click the button to set the cookie<BR>
+&nbsp;
+<input type="button" value="Bake Cookie" onClick="yourCookie('goodCookie=');"><p>
+&nbsp;
+Click the button to read the Value of the cookie along with a greeting.<br>
+&nbsp;
+<input type="button" value="see cookies" onClick="welcomeBack();"><br>
+&nbsp;
+</form>
+&nbsp;
+</div>
+</body>
+</html>

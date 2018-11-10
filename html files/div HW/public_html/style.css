@@ -1,0 +1,103 @@
+#maincontaner
+    {width: 80%;
+    height: auto;
+    background: #ffccff;
+    margin: 0 auto;}
+    
+#header
+    {width: 100%;
+    height: 70px;
+    background: #33ccff;
+    margin: 0 auto;}
+    
+#left
+   {width: 10%;
+    height: 70px;
+    background: #945;
+    float: left;}
+
+#right
+    {width: 90%;
+    height: 70px;
+    background: #99ccff;
+    float: left;}
+    
+.A
+    {color: orange;
+    text-align: center}
+     
+#manu
+    {width: 100%;
+    height: 50px;
+    background: #cccccc;
+    margin: 0 auto;}
+    
+#manu a
+    {text-decoration: none;
+    padding: 0px 25px;
+    line-height: 2px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 2}
+#manu a:hover
+    {text-decoration: none;
+    padding: 0px 25px;
+    line-height: 2px;
+    text-align: center;
+    font-weight: 900;
+    line-height: 2;
+    color: red;}
+
+body
+    {background: lightcyan url("picture/13.jpg")no-repeat; opacity:10;}
+	 
+	 
+#body
+    {width: 100%;
+    height: auto;
+    background: #cccccc;
+    margin: 0 auto;}
+    
+#body1
+    {width: 30%;
+    height: auto;
+    background: #799;
+    float: left;}
+
+#body2
+    {width: 40%;
+    height: auto;
+    background:#555;
+    float: left;}
+
+#body3
+    {width: 30%;
+    height: auto;
+    background: #799;
+    float: left;}
+     
+#footer
+    {width: 100%;
+    height: 150px;
+    background: #cccccc;
+    margin: 0 auto;}
+
+#FL
+    {width: 50%;
+    height: 150px;
+    background: #045;
+    float: left;}
+
+#RL
+    {width: 50%;
+    height: 150px;
+    background: #945;
+    float: left;}
+
+#copyright{
+	width: 100%;
+    height: 150px;
+    background: red;
+    
+	}
+	

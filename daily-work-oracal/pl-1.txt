@@ -1,0 +1,149 @@
+declare
+--variable declaration
+message varchar2(20) := 'Hello, world!';
+begin
+/*
+* pl/sql executable statement(s)
+*/
+dbms_output.put_line(message);
+end;
+/ 
+
+--------------------------------------------
+
+declare
+message varchar2(50) := 'this is sql';
+x integer:= 5;
+y integer:= 4;
+
+begin
+
+dbms_output.put_line(message);
+dbms_output.put_line('this is new');
+
+dbms_output.put_line(x+y);
+dbms_output.put_line(x-y);
+dbms_output.put_line(x*y);
+dbms_output.put_line(x/y);
+end;
+
+/
+
+
+----------------------------------------------
+
+a integer := 10;
+b integer := 20;
+c integer;
+f real;
+begin
+c := a + b;
+dbms_output.put_line('value of c: ' || c);
+f := 70.0/3.0;
+dbms_output.put_line('value of f: ' || f);
+end;
+/
+
+---------------------------------------------------
+
+--global variables
+num1 number := 95 ;
+num2 number := 85;
+begin
+dbms_output.put_line('outer variable num1: ' || num1);
+dbms_output.put_line('outer variable num2: ' || num2);
+declare
+--local variables
+num1 number := 195;
+num2 number := 185;
+begin
+dbms_output.put_line('inner variable num1: ' || num1);
+dbms_output.put_line('inner variable num2: ' || num2);
+end;
+end;
+
+-----------------------------------------------------
+
+create table customers(
+ID int not null,
+name varchar(20) not null,
+age int not null,
+address char (20),
+salary decimal (18,2),
+primary key (ID)
+);
+
+--------------------------------------------------
+
+insert into customers (ID,name,age,address,salary)
+values(5, 'rash', 27,'kota',2000);
+
+-------------------------------------------------
+
+declare
+c_id customers.id%type := 1;
+c_name customers.name%type;
+c_addr customers.address%type;
+c_sal customers.salary%type;
+begin
+select name, address,salary into c_name,c_addr, c_sal
+from customers
+where id =c_id;
+
+declare
+
+-------------------------------------------------------
+
+declare
+subtype name is char(10);
+subtype message is varchar2(100);
+salutation name;
+greetings message;
+begin
+salutation := 'reader';
+greetings := 'welcome to the world of pl/sql';
+dbms_output.put_line(' hello ' || salutation || greetings); 
+end;
+
+-------------------------------------------------
+
+declare
+a number (2) := 21;
+b number (2) := 10;
+begin
+if (a = b) then
+dbms_output.put_line('line 1 - a is equal to b');
+else 
+dbms_output.put_line('line 1 - a is not equal to b');
+end if;
+
+if (a < b) then
+dbms_output.put_line('line 2 - ' || a || ' is less then  b');
+else 
+dbms_output.put_line('line 2 - ' || a || ' is not less then ' || b );
+end if;
+
+if (a > b) then
+dbms_output.put_line('line 3 - a is greater then  b');
+else 
+dbms_output.put_line('line 3 - a is not greater then b');
+end if;
+
+--lets chang value of a and b
+a := 5;
+b :=20;
+if (a <= b) then
+dbms_output.put_line('line 4 - a is either equal or less then  b');
+end if;
+
+if (b >= a) then
+dbms_output.put_line('line 5 - b is either equal or then  a');
+end if;
+
+if (a <> b) then
+dbms_output.put_line('line 6 - a not is equal to b');
+else
+dbms_output.put_line('line 6 - a is equal to b');
+end if;
+
+end;

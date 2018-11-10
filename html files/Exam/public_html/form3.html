@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <fieldset>
+            <legend>form 3</legend>
+            <form>
+                <label>Full Name(autofocus)</label>
+                <input type="text" name="fullname" autofocus="autofocus" value="plz smile"/>
+                <br/>
+                
+                <label>Max Length</label>
+                <input type="text" name="abc" maxlength="3"/>
+                <br/>
+                
+                 <label>Age Length</label>
+                <input type="range" name="age"/>
+                <br/>
+                
+                 <label>Date of Birth, Default</label>
+                <input type="date" name="dob"/>
+                <br/>
+                
+                <label>Date of join,(dd-mm-yyyy)</label>
+                <input type="datetime" name="joindate"/>
+                <br/>
+               
+                 <label>Country code</label>
+                 <input type="text" name="country_code" maxlength="3"
+                                     pattern="[A-Za-z]{3}" title="Three letter country code"/>
+                <br/>
+                
+                 <label>password</label>
+                 <input type="password" name="password" pattern=".{6,}" title="six or more characters"/>
+                <br/>
+                
+                <input type="reset" name="reset"/>
+                <input type="submit" name="submit"/>
+                <br/>
+                
+            </form>
+        </fieldset>
+    </body>
+</html>

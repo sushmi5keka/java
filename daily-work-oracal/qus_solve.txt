@@ -1,0 +1,263 @@
+SQL> connect sys as sysdba;
+Connected.
+SQL> create user black identified by sys;
+
+User created.
+
+
+SQL> grant dba to black;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: black
+Connected.
+SQL> create table department(dep_id number(5) primary key,department_name varchar2(10) not null);
+
+Table created.
+
+SQL> create table employee(emp_id number(5) primary key,emp_name varchar2(10) not null,mobile number(7) unique,salary number(5) check(salary >10000),jonning_date date default sysdate,country varchar2(7) default 'BD',dep_id number(5),constraint d_fk foreign key(dep_id) references department(dep_id));
+
+Table created.
+
+SQL> describe department;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(5)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(10)
+
+SQL> describe employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(5)
+ EMP_NAME                                  NOT NULL VARCHAR2(10)
+ MOBILE                                             NUMBER(7)
+ SALARY                                             NUMBER(5)
+ JONNING_DATE                                       DATE
+ COUNTRY                                            VARCHAR2(7)
+ DEP_ID                                             NUMBER(5)
+
+
+
+SQL> create sequence seq_emp increment by 10 start with 10 maxvalue 100 nocache nocycle;
+
+Sequence created.
+
+
+SQL> create sequence seq_dep increment by 5 start with 5 maxvalue 100 nocache nocycle;
+
+Sequence created.
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME                                                                   
+------------------------------                                                  
+SEQ_DEP                                                                         
+SEQ_EMP                                                                         
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007175                                                                     
+SYS_C007178                                                                     
+SYS_C007179                                                                     
+
+SQL> create index dep_in on department(department_name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007175                                                                     
+SYS_C007178                                                                     
+SYS_C007179                                                                     
+DEP_IN                                                                          
+
+SQL> insert into department(dep_id,department_name) values(seq_dep.nextval,'java');
+
+1 row created.
+
+SQL> insert into department(dep_id,department_name) values(seq_dep.nextval,'DDD');
+
+1 row created.
+
+SQL> insert into department(dep_id,department_name) values(seq_dep.nextval,'PhP');
+
+1 row created.
+
+SQL> create view dep_view as select * from department;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME                                                                       
+------------------------------                                                  
+DEP_VIEW                                                                        
+
+SQL> create synonym syn_dep for department;
+
+Synonym created.
+
+SQL> create synonym syn_dep_view for dep_view;
+
+Synonym created.
+
+SQL> select * from dep_view;
+
+    DEP_ID DEPARTMENT                                                           
+---------- ----------                                                           
+         5 java                                                                 
+        10 DDD                                                                  
+        15 PhP                                                                  
+
+SQL> select * from sys_dep;
+select * from sys_dep
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from syn_dep;
+
+    DEP_ID DEPARTMENT                                                           
+---------- ----------                                                           
+         5 java                                                                 
+        10 DDD                                                                  
+        15 PhP                                                                  
+
+SQL> select * from syn_dep_view;
+
+    DEP_ID DEPARTMENT                                                           
+---------- ----------                                                           
+         5 java                                                                 
+        10 DDD                                                                  
+        15 PhP                                                                  
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007175                                                                     
+SYS_C007178                                                                     
+SYS_C007179                                                                     
+DEP_IN                                                                          
+
+SQL> create index emp_in on employee(emp_name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007175                                                                     
+SYS_C007178                                                                     
+SYS_C007179                                                                     
+DEP_IN                                                                          
+EMP_IN                                                                          
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME                                                                   
+------------------------------                                                  
+SEQ_DEP                                                                         
+SEQ_EMP                                                                         
+
+
+
+SQL> insert into employee(emp_id,emp_name,mobile,salary,jonning_date,country,dep_id) values(seq_emp.nextval,'ting',123,11000,'1-jan-18','thai',5);
+
+1 row created.
+
+
+SQL> insert into employee(emp_id,emp_name,mobile,salary,country,dep_id) values(seq_emp.nextval,'bing',124,11000,'chin',15);
+
+1 row created.
+
+SQL> insert into employee(emp_id,emp_name,mobile,salary,dep_id) values(seq_emp.nextval,'arifing',125,10001,10);
+
+1 row created.
+
+SQL> create view emp_view as select * from employee;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME                                                                       
+------------------------------                                                  
+DEP_VIEW                                                                        
+EMP_VIEW                                                                        
+
+SQL> create synonym syn_emp for employee;
+
+Synonym created.
+
+SQL> create synonym syn_emp_view for emp_view;
+
+Synonym created.
+
+SQL> select * from emp_view;
+
+    EMP_ID EMP_NAME       MOBILE     SALARY JONNING_D COUNTRY     DEP_ID        
+---------- ---------- ---------- ---------- --------- ------- ----------        
+        20 ting              123      11000 01-JAN-18 thai             5        
+        30 bing              124      11000 09-AUG-18 chin            15        
+        40 arifing           125      10001 09-AUG-18 BD              10        
+
+SQL> select * from syn_emp;
+
+    EMP_ID EMP_NAME       MOBILE     SALARY JONNING_D COUNTRY     DEP_ID        
+---------- ---------- ---------- ---------- --------- ------- ----------        
+        20 ting              123      11000 01-JAN-18 thai             5        
+        30 bing              124      11000 09-AUG-18 chin            15        
+        40 arifing           125      10001 09-AUG-18 BD              10        
+
+SQL> select * from syn_emp_view;
+
+    EMP_ID EMP_NAME       MOBILE     SALARY JONNING_D COUNTRY     DEP_ID        
+---------- ---------- ---------- ---------- --------- ------- ----------        
+        20 ting              123      11000 01-JAN-18 thai             5        
+        30 bing              124      11000 09-AUG-18 chin            15        
+        40 arifing           125      10001 09-AUG-18 BD              10        
+
+
+
+
+SQL> update department set department_name='sales' where dep_id=5;
+
+1 row updated.
+
+SQL> alter table employee add email varchar2(7);
+
+Table altered.
+
+SQL> update employee set dep_id=5 where emp_id=20;
+
+1 row updated.
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME       MOBILE     SALARY JONNING_D COUNTRY     DEP_ID EMAIL  
+---------- ---------- ---------- ---------- --------- ------- ---------- -------
+        20 ting              123      11000 01-JAN-18 thai             5        
+        30 bing              124      11000 09-AUG-18 chin            15        
+        40 arifing           125      10001 09-AUG-18 BD              10        
+
+SQL> update employee set dep_id=15 where emp_id=20;
+
+1 row updated.
+
+SQL> select * from employee;
+
+    EMP_ID EMP_NAME       MOBILE     SALARY JONNING_D COUNTRY     DEP_ID EMAIL  
+---------- ---------- ---------- ---------- --------- ------- ---------- -------
+        20 ting              123      11000 01-JAN-18 thai            15        
+        30 bing              124      11000 09-AUG-18 chin            15        
+        40 arifing           125      10001 09-AUG-18 BD              10        
+
+SQL> spool off

@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<script>
+var a = parseInt(prompt("Enter Marks of Written:"));
+var b = parseInt(prompt("Enter Marks of Evendance:"));
+check(a,b);
+function check(x,y){
+	if((x<0 || x>100)||(y<0 || y>100)){
+		document.write("Invalid number entry");
+		return false;
+		}else if((x<70)||(y<30)){
+			document.write("Student Failled");
+			return false;
+			}else{
+				document.write("Student passed and achived number in Written is: " + x + " and in evedance is: " + y );
+				}
+	}
+</script>
+</body>
+</html>

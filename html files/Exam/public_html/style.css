@@ -1,0 +1,49 @@
+#footer
+    {width: 100%;
+    height: 50px;
+    background: #ff9966;}
+#container
+    {width: 80%;
+    height: auto;
+    background: #cccccc;
+    margin: 0 auto;}
+    fieldset{
+    margin: 10px;
+}
+.form-container
+    {width: 100%;
+    height: auto; }
+.leabels
+    {width: 25%;
+    height: auto;
+    float: left;}
+.fields
+    {width: 75%;
+    height: auto;
+    float: left;}
+
+
+#header
+    {width: 100%;
+    height: 50px;
+    background: #ff9966;
+    margin: 0 auto;}
+#body
+    {width: 100%;
+    min-height: 500px;
+    height: auto;
+    margin: 0 auto;}
+#left
+    {width: 30%;
+    height: auto;
+    min-height: 500px;
+    background: #ffff00;
+    float: left;}
+#right
+    {width: 70%;
+    height: auto;
+    min-height: 500px;
+    background: #ffccff;
+    float: left;}
+input, textarea, select, label  
+    {margin: 2px;}

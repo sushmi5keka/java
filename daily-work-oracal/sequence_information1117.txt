@@ -1,0 +1,49 @@
+SQL> connect
+Enter user-name: eid
+Connected.
+SQL> select sequence_name from user_sequence;
+select sequence_name from user_sequence
+                          *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME                                                                   
+------------------------------                                                  
+DEP_SEQ                                                                         
+EMP_SEQ                                                                         
+
+SQL> discribe emp_seq;
+SP2-0734: unknown command beginning "discribe e..." - rest of line ignored.
+SQL> describe emp_seq;
+SP2-0381: DESCRIBE sequence is not available
+
+SQL> describe user_sequences;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SEQUENCE_NAME                             NOT NULL VARCHAR2(30)
+ MIN_VALUE                                          NUMBER
+ MAX_VALUE                                          NUMBER
+ INCREMENT_BY                              NOT NULL NUMBER
+ CYCLE_FLAG                                         VARCHAR2(1)
+ ORDER_FLAG                                         VARCHAR2(1)
+ CACHE_SIZE                                NOT NULL NUMBER
+ LAST_NUMBER                               NOT NULL NUMBER
+
+SQL> select sequence_name,min_value,max_value,increment_by,last_number from user_sequences;
+
+SEQUENCE_NAME                   MIN_VALUE  MAX_VALUE INCREMENT_BY LAST_NUMBER   
+------------------------------ ---------- ---------- ------------ -----------   
+DEP_SEQ                                 1        100           10          35   
+EMP_SEQ                                 1        100            5          50   
+
+SQL> select sequence_name,min_value,max_value,increment_by,last_number from dep_seq;
+select sequence_name,min_value,max_value,increment_by,last_number from dep_seq
+                                                                       *
+ERROR at line 1:
+ORA-02201: sequence not allowed here 
+
+
+SQL> spool off;

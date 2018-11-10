@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>form</title>
+</head>
+
+<body>
+	<form action="display.html">
+    	<label>Name :</label>
+        <input type="text" name="Name"/>
+        <br/>
+        <br/>
+        <label>Gender :</label>
+        <input type="radio" name="Gender"/> Male
+        <input type="radio" name="Gender"/> Female
+         <br/>
+         <br/>
+        <label>Round :</label>
+        <select type="text" name="Round">
+        	<option>select A Round</option>
+            <option>Round-32</option>
+            <option>Round-33</option>
+            <option>Round-34</option>
+            <option>Round-35</option>
+            <option>Round-36</option>
+            <option>Round-37</option>
+            <option>Round-38</option>
+            <option>Round-39</option>
+    </select>
+         <br/>
+         <br/>
+        <label>Completed Sub :</label>
+        <input type="checkbox" name="Completed Sub"/>HTML
+        <input type="checkbox" name="Completed Sub"/>PPT
+        <input type="checkbox" name="Completed Sub"/>JS
+         <br/>
+         <br/>
+        <input type="submit" value="send" onsubmit="sendFormData()" />
+        <input type="reset"  value="clear form"/>
+    </form>
+
+    <script>
+    function sendFormData(){
+		var value1 = "value1";
+		var value2 = "value2";
+		var value3 = "value3";
+		var value4 = "value4";
+		var value5 = "value5";
+		var queryString = "?part1=" + value1 +
+						  "&part2=" + value2 +
+						  "&part3=" + value3 +
+						  "&part4=" + value4 +
+						  "&part5=" + value5 ;
+	}
+		window.location.href = "display.html" + queryString;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+SQL> create or replace trigger cus_after_insert after insert on customer for each row
+  2  declare
+  3  begin
+  4  insert into cus_backup values(:new.id, :new.name, :new.mobile, :new.payment, :new.pay_date);
+  5  dbms_output.put_line('data insert successfully');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create sequence seq_cus
+  2  increment by 1
+  3  start with 1
+  4  maxvalue 20
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+/
+
+

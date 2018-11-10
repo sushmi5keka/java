@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+function bogus(xx){
+	//The 'xx' is the argument
+	var alpha=arguments.length;
+	var beta=bogus.length;
+	return alpha+"arguments,but ahould use"+beta+"argument/s."
+	//when the bogus.legth run it returns 1 because it only has 1 argument.
+}
+document.write("This function uses"+bogus(3,4,5));
+
+//////////////////////////////////////////////////////////////
+
+function alpha(){
+	var hope = 12;
+	var charity = 10;
+	return hope > charity;
+	}
+	
+function beta(){
+	var now =57;
+	var then =3;
+	return now/then;
+	}
+
+var header="<h2>Function in Strings and Numbers </h2>"
+var indigo=alpha();
+var denim=beta();
+var boole = alpha().toString();
+var lean =beta().toString();
+var twoStrings=boole +lean;
+var stringer="the function converted to strings retuen -> ";
+var sumnum="the regular function return the sum ";
+var numnum=indigo+denim;
+document.write(header + stringer +twoStrings+"<p>"+sumnum+numnum);
+
+</script>
+</head>
+
+<body>
+</body>
+</html>

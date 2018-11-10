@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	var cupUp =new Image();
+	cupUp.src="cupaJava.jpg";
+	var cupDown=new Image();
+	cupDown.src="hideJava.jpg";
+	var alpha;
+	var brta;
+	function interval() {
+		alpha=window.setInterval("document.cup.src=cupDown.src",3000);
+	}
+	function timeOut(){
+		window.setTimeout("document.cup.src=cupUp.src",5000);
+		window.clearInterval(alpha);
+	}
+	function cleartimeOut(){
+		window.cleartimeOut(beta);
+	}
+</script>
+</head>
+
+<body>
+<table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%" align="center">
+<tr valign="middle">
+<td align="center"><img name="cup" src="cupaJava.jpg" alt="java"  width="218" height="199"><p>
+<a href="#" onClick="interval()">Interval</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" onClick="timeOut()">Time out</a>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#" onClick="cleartimeOut()">Clear Time out</a>
+</td>
+</tr>
+</table>
+</body>
+</html>

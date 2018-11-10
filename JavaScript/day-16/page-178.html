@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	function setUp(){
+		var TA = new Object();
+		TA=document.memo.today;
+		TA.value="javaScript"	
+	}
+</script>
+</head>
+
+<body bgcolor="#CC3399">
+<h3>Daily Memo:</h3>
+<form name="memo">
+	<textarea cols="40" rows="8" name="today" readonly=0></textarea><p>
+    <input type="button" value="see message" onClick="setUp()">
+</form>
+</body>
+</html>

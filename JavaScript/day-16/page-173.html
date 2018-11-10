@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<style type="text/css">
+body {
+	background-color:#99C;
+	font-family: verdana ;
+}
+.inBox {
+	color:#FFF;
+	font-family:verdana;
+}
+h3 {
+	font-size:18pt;
+	color:#39F;
+}
+</style>
+<script>
+	function sendEm(){
+		var newDisplay="";
+		var myForm=document.enter.length;
+		for(var counter=0;counter < myForm  ;counter++){
+			newDisplay += document.forms[0].elements[counter].value + "\n";
+			}
+			document.forms[1].elements[1].value = newDisplay;
+			}
+</script>
+</head>
+
+<body>
+<h3>Enter the information : </h3>
+<form name="enter">
+<table border="0" cellpadding="3" cellspacing="0" height="78" width="auto" bgcolor="#CCCCFF">
+	<tr>
+    	<td colspan="2" ><input name="fName" type="text"><span class="inBox"> &nbsp;&nbsp;First Name</span></td>
+        <td colspan="2" ><input name="INamename" type="text"><span class="inBox"> &nbsp;&nbsp;Last Name</span></td>
+    </tr>
+    
+    <tr>
+    	<td ><input name="address" type="text"><span class="inBox"> &nbsp;&nbsp;address</span></td>
+        <td ><input name="city" type="text"><span class="inBox"> &nbsp;&nbsp;city</span></td>
+        <td ><input name="state" size="2" type="text"><span class="inBox"> &nbsp;&nbsp;state</span></td>
+        <td ><input name="zip" size="6" type="text"><span class="inBox"> &nbsp;&nbsp;zip code</span></td>
+    </tr>
+    
+    <tr>
+    	<td colspan="4" ><input name="email" type="text"><span class="inBox"> &nbsp;&nbsp;Email</span></td>
+    </tr>
+   </table>
+   </form>
+   <form name="transfer">
+   <input type="button" value="Transfer Array" onClick="sendEm()"><p>
+   <textarea rows="8" cols="80" name="gather"></textarea>
+   </form>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+
+<script>
+	function message(hue){
+	document.forms[0].elements[5].value=hue;	
+	}
+</script>
+</head>
+	
+<body>
+<h2>Big Font</h2>
+<form>
+	<input type=button value="red" onClick="document.bgColor='red'" onMouseDown="message('red')"><br>
+
+    <input type=button value="green" onClick="document.bgColor='green'" onMouseOver="message('green')"><br>
+
+    <input type=button value="blue" onClick="document.bgColor='blue'" onMouseMove="message('blue')"><br>
+
+    <input type=button value="Font color to yellow" onClick="document.fgColor='yellow'"><br>
+
+    <input type=button value="Font color to firebrick" onClick="document.fgColor='firebrick'"><p>
+    <input type=text>
+</form>
+</body>
+</html>

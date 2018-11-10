@@ -1,0 +1,461 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Thu Aug 2 10:20:10 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user eid identified eid;
+create user eid identified eid
+                           *
+ERROR at line 1:
+ORA-00924: missing BY keyword
+
+
+SQL> create user eid identified by eid;
+
+User created.
+
+SQL> grant dba to eid
+  2
+SQL> grant dba to eid ;
+
+Grant succeeded.
+
+SQL> connect;
+Enter user-name: eid
+Enter password:
+Connected.
+SQL> create table departments(dep_id number(3) primary key, dep_name varchar2(12) not null);
+
+Table created.
+
+SQL> create table employees(emp_id number(3) primary key, emp_name varchar2(12) not null, mobile number(11) unique, salary number(7,2) check(salary>10000), joining_date Date default sysdate, country varchar2(13) default 'BD', dep_id number(3), constraint emp_dep_fk foreign key (dep_id) references departments (dep_id));
+
+Table created.
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(3)
+ DEP_NAME                                  NOT NULL VARCHAR2(12)
+
+SQL> describe employees;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(3)
+ EMP_NAME                                  NOT NULL VARCHAR2(12)
+ MOBILE                                             NUMBER(11)
+ SALARY                                             NUMBER(7,2)
+ JOINING_DATE                                       DATE
+ COUNTRY                                            VARCHAR2(13)
+ DEP_ID                                             NUMBER(3)
+
+SQL> create sequence dep_seq increment by 10 start with 10 nomaxvalue nominvalue nocycle nocache;
+
+Sequence created.
+
+SQL> create sequence dep_seq increment by 5 start with 1 nomaxvalue nominvalue nocycle nocache;
+create sequence dep_seq increment by 5 start with 1 nomaxvalue nominvalue nocycle nocache
+                *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create sequence emp_seq increment by 5 start with 1 nomaxvalue nominvalue nocycle nocache;
+
+Sequence created.
+
+SQL> select sequence_name from user_sequence;
+select sequence_name from user_sequence
+                          *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME
+------------------------------
+DEP_SEQ
+EMP_SEQ
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+SYS_C007128
+SYS_C007127
+SYS_C007124
+
+SQL> create index dep_inx on departments(dep_name);
+
+Index created.
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME
+------------------------------
+DEP_SEQ
+EMP_SEQ
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+DEP_INX
+SYS_C007128
+SYS_C007127
+SYS_C007124
+
+SQL> insert into departments (dep_id, dep_name) values(dep_seq.nextval, 'Admin');
+
+1 row created.
+
+SQL> insert into departments (dep_id, dep_name) values(dep_seq.nextval, 'Software');
+
+1 row created.
+
+SQL> insert into departments (dep_id, dep_name) values(dep_seq.nextval, 'Marketing');
+
+1 row created.
+
+SQL> select * from departments;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 Marketing
+
+SQL> create view depvw as select dep_id, dep_name from departments;
+
+View created.
+
+SQL> select * from depvw;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 Marketing
+
+SQL> create synonym dep_syn for department;
+
+Synonym created.
+
+SQL> create synonym view_syn for depvw;
+
+Synonym created.
+
+SQL> select * from view_sys;
+select * from view_sys
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from view_syn;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 Marketing
+
+SQL> select * from dep_syn;
+select * from dep_syn
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> select * from dep_syn;
+select * from dep_syn
+              *
+ERROR at line 1:
+ORA-00980: synonym translation is no longer valid
+
+
+SQL> select * from department;
+select * from department
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from departments;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 Marketing
+
+SQL> dorp synonym dep_syn;
+SP2-0734: unknown command beginning "dorp synon..." - rest of line ignored.
+SQL> drop synonym dep_syn;
+
+Synonym dropped.
+
+SQL> create synonym depart_syn for departments;
+
+Synonym created.
+
+SQL> select * from depart_syn;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 Marketing
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+DEP_INX
+SYS_C007128
+SYS_C007127
+SYS_C007124
+
+SQL> create index emp_inx on employees(emp_name);
+
+Index created.
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME
+------------------------------
+DEP_SEQ
+EMP_SEQ
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+DEP_INX
+EMP_INX
+SYS_C007128
+SYS_C007127
+SYS_C007124
+
+SQL> insert into employees(emp_id, emp_name, mobile, salary, joining_date, country, dep_id) values(emp_seq.nextval, 'bali', 0177777777, 15000, '12-jun-12', 'india', 20);
+
+1 row created.
+
+SQL> insert into employees(emp_id, emp_name, mobile, salary, country, dep_id) values(emp_seq.nextval, 'juli', 0154656666, 16000, 'chaina', 10);
+
+1 row created.
+
+SQL> insert into employees(emp_id, emp_name, mobile, salary, dep_id) values(emp_seq.nextval, 'roni', 0153556666, 18000, 30);
+
+1 row created.
+
+SQL> insert into employees(emp_id, emp_name, mobile, salary, joining_date, country, dep_id) values(emp_seq.nextval, 'boni', 0154647637, 15000, '2-oct-14', 'rassia', 10);
+
+1 row created.
+
+SQL> insert into employees(emp_id, emp_name, mobile, salary, joining_date, dep_id) values(emp_seq.nextval, 'joni', 3443343443, 15500, '2-oct-14', 30);
+
+1 row created.
+
+SQL> select * from employees;
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+         1 bali          177777777      15000 12-JUN-12 india                 20
+         6 juli          154656666      16000 02-AUG-18 chaina                10
+        11 roni          153556666      18000 02-AUG-18 BD                    30
+        16 boni          154647637      15000 02-OCT-14 rassia                10
+        21 joni         3443343443      15500 02-OCT-14 BD                    30
+
+SQL> create view empvw from emlpoyees;
+create view empvw from emlpoyees
+                  *
+ERROR at line 1:
+ORA-00905: missing keyword
+
+
+SQL> create view empvw as from emlpoyees;
+create view empvw as from emlpoyees
+                     *
+ERROR at line 1:
+ORA-00928: missing SELECT keyword
+
+
+SQL> create view depvw as select from departments;
+create view depvw as select from departments
+                            *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> create view empvw as select emp_id, emp_name, salary, country, moblie from employees;
+create view empvw as select emp_id, emp_name, salary, country, moblie from employees
+                                                               *
+ERROR at line 1:
+ORA-00904: "MOBLIE": invalid identifier
+
+
+SQL> create view empvw as select emp_id, emp_name, salary, country, mobile from employees;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME
+------------------------------
+DEPVW
+EMPVW
+
+SQL> create synonym emp_syn for employees;
+
+Synonym created.
+
+SQL> create synonym eviwe_syn for employees;
+
+Synonym created.
+
+SQL> select * from epm_syn;
+select * from epm_syn
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from emp_syn;
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+         1 bali          177777777      15000 12-JUN-12 india                 20
+         6 juli          154656666      16000 02-AUG-18 chaina                10
+        11 roni          153556666      18000 02-AUG-18 BD                    30
+        16 boni          154647637      15000 02-OCT-14 rassia                10
+        21 joni         3443343443      15500 02-OCT-14 BD                    30
+
+SQL> create synonym eviwe_syn for empvw;
+create synonym eviwe_syn for empvw
+               *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> create synonym epviwe_syn for empvw;
+
+Synonym created.
+
+SQL> select * from epviwe;
+select * from epviwe
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from epviwe_syn;
+
+    EMP_ID EMP_NAME         SALARY COUNTRY           MOBILE
+---------- ------------ ---------- ------------- ----------
+         1 bali              15000 india          177777777
+         6 juli              16000 chaina         154656666
+        11 roni              18000 BD             153556666
+        16 boni              15000 rassia         154647637
+        21 joni              15500 BD            3443343443
+
+SQL> update departments set dep_name = 'sales' where dep_name = 'marketing';
+
+0 rows updated.
+
+SQL> update departments set dep_name = 'sales' where dep_id = 30;
+
+1 row updated.
+
+SQL> select * from employees;
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+         1 bali          177777777      15000 12-JUN-12 india                 20
+         6 juli          154656666      16000 02-AUG-18 chaina                10
+        11 roni          153556666      18000 02-AUG-18 BD                    30
+        16 boni          154647637      15000 02-OCT-14 rassia                10
+        21 joni         3443343443      15500 02-OCT-14 BD                    30
+
+SQL> select * from departments;
+
+    DEP_ID DEP_NAME
+---------- ------------
+        10 Admin
+        20 Software
+        30 sales
+
+SQL> alter table employees add email varchar2(18) unique;
+
+Table altered.
+
+SQL> select * from emlp;
+select * from emlp
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from employees;
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+EMAIL
+------------------
+         1 bali          177777777      15000 12-JUN-12 india                 20
+
+
+         6 juli          154656666      16000 02-AUG-18 chaina                10
+
+
+        11 roni          153556666      18000 02-AUG-18 BD                    30
+
+
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+EMAIL
+------------------
+        16 boni          154647637      15000 02-OCT-14 rassia                10
+
+
+        21 joni         3443343443      15500 02-OCT-14 BD                    30
+
+
+
+SQL> update employees set dep_id =30 where emp_id = 1;
+
+1 row updated.
+
+SQL> select * from employees;
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+EMAIL
+------------------
+         1 bali          177777777      15000 12-JUN-12 india                 30
+
+
+         6 juli          154656666      16000 02-AUG-18 chaina                10
+
+
+        11 roni          153556666      18000 02-AUG-18 BD                    30
+
+
+
+    EMP_ID EMP_NAME         MOBILE     SALARY JOINING_D COUNTRY           DEP_ID
+---------- ------------ ---------- ---------- --------- ------------- ----------
+EMAIL
+------------------
+        16 boni          154647637      15000 02-OCT-14 rassia                10
+
+
+        21 joni         3443343443      15500 02-OCT-14 BD                    30
+
+
+
+SQL>

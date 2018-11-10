@@ -1,0 +1,255 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Aug 7 09:25:57 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user xyz identified by xyz;
+
+User created.
+
+SQL> grant create session to xyz;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xyz
+Enter password:
+Connected.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+
+SQL> grant create table to xyz;
+
+Grant succeeded.
+
+SQL> create table test(id number(2) primary key,name varchar2(15) not null);
+
+Table created.
+
+SQL> connect
+Enter user-name: xyz
+Enter password:
+Connected.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> alter user xyz quota 50m on system;
+
+User altered.
+
+SQL> connect
+Enter user-name: xyz
+Enter password:
+Connected.
+SQL> create table test(id number(2) primary key,name varchar2(15) not null);
+
+Table created.
+
+SQL> select * from test;
+
+no rows selected
+
+SQL> insert into test(id,name) values(1,'apple');
+
+1 row created.
+
+SQL> select * from test;
+
+        ID NAME
+---------- ---------------
+         1 apple
+
+SQL> update test set name='orange' where id=1;
+
+1 row updated.
+
+SQL> select * from test;
+
+        ID NAME
+---------- ---------------
+         1 orange
+
+SQL> show autocommit;
+autocommit OFF
+SQL> set autocommit on;
+SQL> show autocommit;
+autocommit IMMEDIATE
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user xxx identified by xxx;
+
+User created.
+
+SQL> connect
+Enter user-name: xxx
+Enter password:
+ERROR:
+ORA-01045: user XXX lacks CREATE SESSION privilege; logon denied
+
+
+Warning: You are no longer connected to ORACLE.
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant create session to xxx;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xxx
+Enter password:
+Connected.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant create table to xxx;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xxx
+Enter password:
+Connected.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> alter user xxx quota 500m on system;
+
+User altered.
+
+SQL> connect
+Enter user-name: xxx
+Enter password:
+Connected.
+SQL> create table x(id number(3) primary key,name varchar2(15));
+
+Table created.
+
+SQL> select * from x;
+
+no rows selected
+
+SQL> insert into x(id,name) values(1,'ice_cream');
+
+1 row created.
+
+Commit complete.
+SQL> insert into x(id,name) values(2,'cocholet');
+
+1 row created.
+
+Commit complete.
+SQL> insert into x(id,name) values(3,'cake');
+
+1 row created.
+
+Commit complete.
+SQL> insert into x(id,name) values(4,'cold_coffee');
+
+1 row created.
+
+Commit complete.
+SQL> insert into x(id,name) values(5,'ice_cream');
+
+1 row created.
+
+Commit complete.
+SQL> update x set name='tea' where id=1;
+
+1 row updated.
+
+Commit complete.
+SQL> alter table x rename to sweetes;
+
+Table altered.
+
+SQL> select * from sweetes;
+
+        ID NAME
+---------- ---------------
+         1 tea
+         2 cocholet
+         3 cake
+         4 cold_coffee
+         5 ice_cream
+
+SQL> update sweetes set name='loly-pop' where id=1;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from sweetes;
+
+        ID NAME
+---------- ---------------
+         1 loly-pop
+         2 cocholet
+         3 cake
+         4 cold_coffee
+         5 ice_cream
+
+
+SQL> alter table sweetes add(price number(3),discount number(2,1))
+  2
+SQL> alter table sweetes add(price number(3),discount number(2))
+  
+
+SQL> alter table sweetes add price number(3);
+
+Table altered.
+
+SQL> select * from sweetes;
+
+        ID NAME                 PRICE
+---------- --------------- ----------
+         1 loly-pop
+         2 cocholet
+         3 cake
+         4 cold_coffee
+         5 ice_cream
+
+SQL> update sweetes set price=15 where id=1;
+
+1 row updated.
+
+Commit complete.
+SQL> update sweetes set price=25 where id=2;
+
+1 row updated.
+
+Commit complete.
+SQL> update sweetes set price=50 where id=3;
+
+1 row updated.
+
+Commit complete.
+SQL> update sweetes set price=30 where id=4;
+
+1 row updated.
+
+Commit complete.
+SQL> update sweetes set price=40 where id=5;
+
+1 row updated.
+
+Commit complete.
+SQL> select * from sweetes;
+
+        ID NAME                 PRICE
+---------- --------------- ----------
+         1 loly-pop                15
+         2 cocholet                25
+         3 cake                    50
+         4 cold_coffee             30
+         5 ice_cream               40
+
+SQL>

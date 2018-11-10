@@ -1,0 +1,20 @@
+P 2-5  : select employee_id, last_name, job_id, department_id from employees where department_id =90;
+P 2-6  : select last_name, job_id, department_id from employees where last_name = 'Rajs';
+P 2-8  : select last_name, salary from employees where salary <= 3000; 
+P 2-9  : select last_name, salary from employees where salary between 2500 and 3500 ;
+P 2-10  : select last_name, salary, manager_id from employees where manager_id in (100, 101, 201) ;
+P 2-11  : select first_name from employees where first_name like 'S%' ;
+P 2-12  : select last_name from employees where last_name like '_o%' ;
+P 2-13  : select last_name, manager_id from employees where manager_id is null;
+P 2-15  : select employee_id last_name, job_id, salary from employees where salary >= 10000 and job_id like '%MAN%' ; 
+P 2-16  : select employee_id last_name, job_id, salary from employees where salary >= 10000 and job_id like '%MAN%' ; 
+P 2-17  : select employee_id last_name, job_id, salary from employees where  job_id not in ('IT_PROG', 'ST_CLERK', 'SA_REP' ) ; 
+P 2-19  : select employee_id last_name, job_id, salary from employees where  job_id = 'SA_REP' or job_id = 'AD_PRES' and salary > 15000 ;
+P 2-19  : select employee_id last_name, job_id, salary from employees where  (job_id = 'SA_REP' or job_id = 'AD_PRES') and salary > 15000 ;
+P 2-19  : select last_name, job_id, department_id, hire_date from employees ORDER BY hire_date ;
+P 2-19  : select last_name, job_id, department_id, hire_date from employees ORDER BY hire_date DESC ;
+P 2-19  : select employee_id, last_name, job_id, salary*12 annsal from employees ORDER BY annsal ;
+P 2-19  : select last_name, department_id, salary from employees ORDER BY department_id, salary DESC ;
+P 2-19  :
+P 2-19  :
+P 2-19  :

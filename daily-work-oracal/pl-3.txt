@@ -1,0 +1,157 @@
+declare
+x number := 10;
+begin
+loop
+dbms_output.put_line(x);
+x := x + 10;
+if x > 50 then
+exit;
+end if;
+end loop;
+dbms_output.put_line('after exit x is : ' || x);
+end;
+---------------
+10
+20
+30
+40
+50
+after exit x is : 60
+
+Statement processed.
+
+========================
+
+declare
+x number := 10;
+begin
+loop
+dbms_output.put_line(x);
+x := x + 10;
+exit when x > 50;
+end loop;
+dbms_output.put_line('after exit x is : ' || x);
+end;
+------------------------
+
+10
+20
+30
+40
+50
+after exit x is : 60
+
+Statement processed.
+
+==========================
+
+declare
+a number(2) := 10;
+begin
+while a < 20 loop
+dbms_output.put_line('value of a : ' || a);
+a := a + 1;
+end loop;
+end;
+
+-------------------
+value of a : 10
+value of a : 11
+value of a : 12
+value of a : 13
+value of a : 14
+value of a : 15
+value of a : 16
+value of a : 17
+value of a : 18
+value of a : 19
+
+Statement processed.
+
+===========================
+
+declare
+a number(2); 
+begin
+for a in 10..20 loop
+dbms_output.put_line('value of a : ' || a);
+end loop;
+end;
+
+-----------------------
+value of a : 10
+value of a : 11
+value of a : 12
+value of a : 13
+value of a : 14
+value of a : 15
+value of a : 16
+value of a : 17
+value of a : 18
+value of a : 19
+value of a : 20
+
+Statement processed.
+
+===========================
+
+declare
+a number(2); 
+begin
+for a in reverse 10..20 loop
+dbms_output.put_line('value of a : ' || a);
+end loop;
+end;
+-----------------------
+value of a : 20
+value of a : 19
+value of a : 18
+value of a : 17
+value of a : 16
+value of a : 15
+value of a : 14
+value of a : 13
+value of a : 12
+value of a : 11
+value of a : 10
+
+Statement processed.
+
+==========================
+
+declare
+i number(3);
+j number(3);
+begin
+i := 2 ;
+loop j:=2;
+loop
+exit when((mod(i,j)=0) or (j=i));
+j := j+ 1;
+end loop;
+if (j =i ) then
+dbms_output.put_line(i || ' is prime');
+end if ;
+i := i +1;
+exit when i = 50;
+end loop;
+end;
+-----------------------
+
+2 is prime
+3 is prime
+5 is prime
+7 is prime
+11 is prime
+13 is prime
+17 is prime
+19 is prime
+23 is prime
+29 is prime
+31 is prime
+37 is prime
+41 is prime
+43 is prime
+47 is prime
+
+Statement processed.

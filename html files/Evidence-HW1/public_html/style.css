@@ -1,0 +1,41 @@
+#container
+    {width: 80%;
+     height: auto;
+     min-height: 500px;
+     background: #ffffff;
+     margin: 0 auto;}
+    
+#header
+    {width: 90%;
+     height: 50px;
+     background: #000033;
+     margin: 0 auto;}
+
+#body
+    {width: 90%;
+     height: auto;
+     min-height: 400px;
+     background: #ffffff;
+     margin: 0 auto;}
+    
+#left
+    {width: 30%;
+     height: auto;
+     min-height: 400px;
+     background: #009999;
+     float: left}
+    
+#Right
+    {width: 70%;
+     height: auto;
+     min-height: 400px;
+     background: #ffffff;
+     float: left}
+    
+#footer
+    {width: 90%;
+     height: auto;
+     min-height: 50px;
+     background: #000033;
+     margin: 0 auto;}
+    

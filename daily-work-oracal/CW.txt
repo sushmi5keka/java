@@ -1,0 +1,138 @@
+SQL> connect sys as sysdba;
+Connected.
+SQL> create user cw identified by sys;
+
+User created.
+
+SQL> grant dba to cw;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: cw
+Connected.
+SQL> create table department(dep_id number(3) primary key,department_name varchar2(15) not null);
+
+Table created.
+
+SQL> create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,mobile number(11) unique,salary number(7) check(salary>10000),joinning_date date default sysdate,country varchar2(15) default 'BD',dep_id number(3), constraint dep_fk foreign key (dep_id) reference department(dep_id);
+create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,mobile number(11) unique,salary number(7) check(salary>10000),joinning_date date default sysdate,country varchar2(15) default 'BD',dep_id number(3), constraint dep_fk foreign key (dep_id) reference department(dep_id)
+                                                                                                                                                                                                                                                                              *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,mobile number(11) unique,salary number(7) check(salary>10000),joinning_date date default sysdate,country varchar2(15) default 'BD',dep_id number(3), constraint dep_fk foreign key (dep_id) reference department(dep_id));
+create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,mobile number(11) unique,salary number(7) check(salary>10000),joinning_date date default sysdate,country varchar2(15) default 'BD',dep_id number(3), constraint dep_fk foreign key (dep_id) reference department(dep_id))
+                                                                                                                                                                                                                                                                              *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> create table employee(emp_id number(3) primary key,emp_name varchar2(15) not null,mobile number(11) unique,salary number(7) check(salary>10000),joinning_date date default sysdate,country varchar2(15) default 'BD',dep_id number(3), constraint dep_fk foreign key (dep_id) references department(dep_id));
+
+Table created.
+
+SQL> describe department;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(3)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(15)
+
+SQL> describe employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(3)
+ EMP_NAME                                  NOT NULL VARCHAR2(15)
+ MOBILE                                             NUMBER(11)
+ SALARY                                             NUMBER(7)
+ JOINNING_DATE                                      DATE
+ COUNTRY                                            VARCHAR2(15)
+ DEP_ID                                             NUMBER(3)
+
+SQL> create sequence dep_sq increment by 10 start with 1 maxvalue 100 nocache nocycle;
+
+Sequence created.
+
+SQL> create sequence emp_sq increment by 5 start with 0 maxvalue 100 nocache nocycle;
+create sequence emp_sq increment by 5 start with 0 maxvalue 100 nocache nocycle
+*
+ERROR at line 1:
+ORA-04006: START WITH cannot be less than MINVALUE 
+
+
+SQL> create sequence emp_sq increment by 5 start with 5 maxvalue 100 nocache nocycle;
+
+Sequence created.
+
+SQL> select sequenc_name from user_sequences;
+select sequenc_name from user_sequences
+       *
+ERROR at line 1:
+ORA-00904: "SEQUENC_NAME": invalid identifier 
+
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME                                                                   
+------------------------------                                                  
+DEP_SQ                                                                          
+EMP_SQ                                                                          
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007135                                                                     
+SYS_C007136                                                                     
+SYS_C007132                                                                     
+
+SQL> create index dep_ind on department(department_name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007135                                                                     
+SYS_C007136                                                                     
+DEP_IND                                                                         
+SYS_C007132                                                                     
+
+SQL> insert into department(dep_id,dep_name) values(dep_sq.nextval,'Admin');
+insert into department(dep_id,dep_name) values(dep_sq.nextval,'Admin')
+                              *
+ERROR at line 1:
+ORA-00904: "DEP_NAME": invalid identifier 
+
+
+SQL> insert into department(dep_id,department_name) values(dep_sq.nextval,'Admin');
+
+1 row created.
+
+SQL> create view dep_v as select * from employees;
+create view dep_v as select * from employees
+                                   *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> create view dep_v as select * from employee;
+
+View created.
+
+SQL> select view_name from user_viewes;
+select view_name from user_viewes
+                      *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select view_name from user_views;
+
+VIEW_NAME                                                                       
+------------------------------                                                  
+DEP_V                                                                           
+
+SQL> spool off

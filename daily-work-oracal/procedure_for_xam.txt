@@ -1,0 +1,37 @@
+create table student(
+user_id number(5) primary key,
+username varchar2(15) not null
+);
+-------------
+Table created.
+===========================
+
+create or replace procedure getStudent(
+p_userid in student.user_id%type,
+p_username out student.userName%type)
+is
+begin
+select username
+into p_username
+from student where user_id = p_userid;
+end;
+---------------
+Procedure created.
+===============================
+
+insert into student(user_id,userName) values(3,'mithu');
+----------------------
+1 row(s) inserted.
+==================================
+
+declare
+p_username student.userName%type;
+begin
+getStudent(1,p_username);
+dbms_output.put_line('username : ' || p_username);
+end;
+-----------------
+username : mina
+
+Statement processed.
+==================================

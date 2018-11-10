@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>form</title>
+</head>
+
+<body>
+<div style="height:600px; width:100%; background: #6FC; padding:2px;">
+<fieldset>
+<legend>My Frame</legend>
+<form action="display.html">
+	<br>
+
+	<label>ID : </label>
+    <input type="number" name="ID">
+    <br>
+	<br>
+
+    <label>Name : </label>
+    <input type="text" name="Name">
+	<br>
+	<br>
+    
+    <label>Gender : </label>
+    <input type="radio" name="Gender" value="male">-Male
+    <input type="radio" name="Gender" value="female">-Female
+	<br>
+	<br>
+     
+    <label>Language : </label>
+    <select name="Language">
+    	<option>English</option>
+        <option>Bangla</option>
+        <option>Arabic</option>
+    </select>
+	<br>
+	<br>
+    
+    <label>Subject : </label>
+    <input type="checkbox" name="Subject"> html
+    <input type="checkbox" name="Subject"> ppt
+    <input type="checkbox" name="Subject"> js
+	<br>
+	<br>
+    
+    <label>Comment : </label>
+    <textarea name="Comment" cols="12" rows="7"></textarea>
+	<br>
+	<br>
+    
+    <label>File : </label>
+    <input type="file" name="File">
+    
+	<br>
+	<br>
+    
+    <label>Password : </label>
+    <input type="password" name="Password">
+	<br>
+	<br>
+    
+    <label>Re-try Password</label>
+    <input type="password" name="Re-try&nbsp;Password">
+	<br>
+	<br>
+	
+    <input type="submit" value="submit" onsubmit="sendFormData()">
+    <input type="reset" value="clear">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+</form>
+</fieldset>
+</div>
+
+<script>
+	function sendFormData(){
+			var value1 = "value1" ; 
+			var value2 = "value2" ;
+			var value3 = "value3" ;
+			var value4 = "value4" ;
+			var value5 = "value5" ;
+			var value6 = "value6" ;
+			var value7 = "value7" ;
+			var value8 = "value8" ;
+			var value9 = "value9" ;
+			var queryString  =  "?para1=" + value1 +
+								"&para2=" + value2 + 
+								"&para3=" + value3 +
+								"&para4=" + value4 +
+								"&para5=" + value5 +
+								"&para6=" + value6 +
+								"&para7=" + value7 +
+								"&para8=" + value8 +
+								"&para9=" + value9 ;
+			window.location.href = "display.html" + queryString ;
+	}
+</script>
+
+
+</body>
+</html>

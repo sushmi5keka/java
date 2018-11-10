@@ -1,0 +1,135 @@
+
+SQL*Plus: Release 11.2.0.2.0 Production on Tue Aug 7 11:45:24 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> select * from xyz.test;
+select * from xyz.test
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant select on xyz.test to xyz2 with grant option;
+
+Grant succeeded.
+
+SQL> select * from xyz.test;
+
+        ID NAME
+---------- ---------------
+         1 orange
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> select * from xyz.test;
+
+        ID NAME
+---------- ---------------
+         1 orange
+
+SQL> select * from xyz2.test;
+
+        ID NAME
+---------- ---------------
+         1 apple
+         2 banana
+
+SQL> select * from sweetes.test;
+select * from sweetes.test
+                      *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> select * from xxx.test;
+select * from xxx.test
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant select on xyz.test to xxx with grant option;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xyz
+Enter password:
+Connected.
+SQL> select * from xxx.test;
+select * from xxx.test
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: xyz2
+Enter password:
+Connected.
+SQL> select * from xxx.test;
+select * from xxx.test
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: xxx
+Enter password:
+Connected.
+SQL> select * from xyz.test;
+
+        ID NAME
+---------- ---------------
+         1 orange
+
+SQL> connect sya as sysdba;
+Enter password:
+Connected.
+SQL> grant select on xxx.test to xyz with grant option;
+grant select on xxx.test to xyz with grant option
+                    *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> grant select on xxx.sweetes to xyz with grant option;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: xyz
+Enter password:
+Connected.
+SQL> select * xxx.sweetes;
+select * xxx.sweetes
+         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select * from xxx.sweetes;
+
+        ID NAME                 PRICE
+---------- --------------- ----------
+         1 loly-pop                15
+         2 cocholet                25
+         3 cake                    50
+         4 cold_coffee             30
+         5 ice_cream               40
+
+SQL>

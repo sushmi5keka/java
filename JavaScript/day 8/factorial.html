@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+	function calculationfactorial (n) {
+		if (n== 0){
+		return 1;
+	}else{
+		return n*calculationfactorial(n-1);
+	}
+	}
+var number = prompt ("enter a number : ","1");
+document.write( calculationfactorial(number));
+</script>
+</body>
+</html>

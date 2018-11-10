@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+	var display = "<h3>" + self.name + "</h3>";
+	display += "<div class='bod'>";
+	var gone= " ";
+	var alpha=self.closed;
+	if(alpha==false){
+		var gone="never";
+	}
+	display += "This window has" + gone + " been closed.<br>";
+	// change
+	self.defaultStatus="\"This window property can be changed.\"";
+	display +="The default status reads : " + self.defaultStatus +"<br></div>";
+	document.write(display);
+</script>
+</head>
+
+<body>
+<a href="page=110.html">Go Dummy</a>
+
+</body>
+</html>

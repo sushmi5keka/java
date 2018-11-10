@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div style="width:500px; margin: 0 auto; background: #ffff66">
+            <form action="disply.html" style="padding: 7px;">
+                <label>ID</label>
+                <input type="number" name="ID" required/>
+                <br/>
+                <br/>
+                
+                <label>Fullname</label>
+                <input type="text" name="Fullname" required/>
+                <br/>
+                <br/>
+                
+                <label>Gender</label>
+                Male:<input type="radio" name="Gender" value="Male"/>
+                Female:<input type="radio" name="Gender" value="Female"/>
+                <br/>
+                <br/>
+                
+                <label>Hobby</label>
+                Reading: <input type="checkbox" name="Hobby" value="Reading"/>
+                writing <input type="checkbox" name="Hobby" value="writing"/>
+                playing <input type="checkbox" name="Hobby" value="playing"/>
+                <br/>
+                <br/>
+                
+                <label>Round</label>
+                <select name="Round">
+                    <option>Select Round</option>
+                    <option value="round-36">round-36</option>
+                    <option value="round-37">round-37</option>
+                    <option value="round-38">round-38</option>
+                </select>
+                <br/>
+                <br/>
+                <br/>
+                
+                <input type="reset" value="Reset"/>
+                <input type="submit" Value="send" onsubmit="sendFormData()"/>
+            </form>
+        </div>
+        <script>
+            function sendFormData()
+            {var value1 = "value1";
+             var value2 = "value2";
+             var value3 = "value3";
+             var value4 = "value4";
+             var value5 = "value5";
+             var queryString = "?paral= " + value1 + 
+                               "?para2= " + value2 + 
+                               "?para3= " + value3 + 
+                               "?para4= " + value4 + 
+                               "?para5= " + value5;  
+             window.location.href = "display.html" + quryString;}
+        </script>
+    </body>
+</html>

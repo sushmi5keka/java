@@ -1,0 +1,211 @@
+declare
+procedure compare (value varchar2, pattern varchar2) is begin
+if value like pattern then 
+dbms_output.put_line ('true');
+
+else dbms_output.put_line ('false');
+end if;
+end;
+begin
+
+-----------------------------------------
+
+declare
+letter varchar2(1) := 'm';
+begin
+if (letter in ('a','b','c')) then
+dbms_output.put_line('true');
+else
+dbms_output.put_line('flase');
+end if;
+
+if(letter in ('m','n','o')) then
+dbms_output.put_line('true');
+
+else
+dbms_output.put_line('false');
+end if;
+
+if(letter is null) then
+dbms_output.put_line('true');
+
+else
+
+dbms_output.put_line('false');
+end if;
+end;
+
+
+
+------------------------------------------------
+
+
+compare('zara ali','z%a_i');
+compare('nuha ali','z%a_i');
+end;
+
+note-[like function]
+-------------------------------
+
+declare
+a Boolean := true ;
+b Boolean := false ;
+
+begin
+if (a and b) then
+dbms_output.put_line('line 1- condition is true');
+end if;
+if(a or b) then
+dbms_output.put_line('line 2- condition is true');
+end if;
+
+if(not a) then
+dbms_output.put_line('line 3- a is not true');
+
+else
+dbms_output.put_line('line 3- a is true');
+end if;
+
+if(not b) then
+dbms_output.put_line('line 4- b is not true');
+
+else
+
+dbms_output.put_line('line 4- a is true');
+end if;
+end;
+
+-----------------------------------------
+
+declare
+a number(2) := 20;
+b number(2) := 10;
+c number(2) := 15;
+d number(2) := 5;
+e number(2) ;
+
+begin
+e := (a + b) * c/d;
+dbms_output.put_line('value of (a + b) * c/d is : ' || e);
+
+e := ((a + b) * c)/d;
+dbms_output.put_line('value of ((a + b) * c)/d is : ' || e);
+
+
+e := (a + b) *(c/d);
+dbms_output.put_line('value of (a + b) *(c/d) is : ' || e);
+
+e := a + (b*c) / d;
+dbms_output.put_line('value of a + (b * c) / d is : ' || e);
+
+end;
+
+
+----------------------------------------------------------
+
+declare 
+a number(2) := 10;
+begin
+a:= 10;
+
+if(a < 20) then
+dbms_output.put_line('a is less than 20');
+end if;
+dbms_output.put_line('value of a is : ' || a);
+end;
+
+
+-----------------------------------------------------
+
+declare
+c_id customers.id%type := 1;
+c_sal customers.salary%type;
+begin
+select salary
+into c_sal
+from customers
+where id = c_id;
+if (c_sal <= 2000) then 
+update customers
+set salary = salary + 1000
+where id = c_id;
+dbms_output.put_line ('salary updated');
+end if;
+end;
+
+---------------------------------------------------------
+
+declare
+a number(3) := 100;
+begin
+if(a < 20) then
+dbms_output.put_line('a is less than 20');
+else
+dbms_output.put_line('a is not less than 20');
+end if;
+dbms_output.put_line('value of a is : ' || a);
+end;
+
+--------------------------------------------------------
+
+declare
+a number(3):= 100;
+begin
+if ( a = 10 ) then
+dbms_output.put_line('value of a is 10');
+elsif (a = 20) then
+dbms_output.put_line('value of a is 20');
+elsif (a = 30) then
+dbms_output.put_line('value of a is 30');
+else
+dbms_output.put_line('none of the value is matching');
+end if;
+dbms_output.put_line('exact value of a is :' || a);
+end;
+
+------------------------------------------------------
+
+declare
+grade char(1) := 'A';
+begin
+case grade
+when 'A' then dbms_output.put_line('excellent');
+when 'B' then dbms_output.put_line('very good');
+when 'C' then dbms_output.put_line('well done');
+when 'D' then dbms_output.put_line('you passed');
+when 'E' then dbms_output.put_line('better try again');
+else dbms_output.put_line('no such grade');
+end case;
+end;
+
+---------------------------------------------------------
+
+declare
+grade char(1) := 'B';
+begin
+case 
+when grade = 'A' then dbms_output.put_line('excellent');
+when grade = 'B' then dbms_output.put_line('very good');
+when grade = 'C' then dbms_output.put_line('well done');
+when grade = 'D' then dbms_output.put_line('you passed');
+when grade = 'E' then dbms_output.put_line('better try again');
+else dbms_output.put_line('no such grade');
+end case;
+end;
+
+----------------------------------------------------------
+
+declare
+a number(3) := 100;
+b number(3) := 200;
+begin
+if (a =100) then
+if (b = 200) then
+dbms_output.put_line('value of a is 100 and b is 200');
+end if;
+end if;
+dbms_output.put_line('exact value of a is : ' || a) ;
+dbms_output.put_line('exact value of a is : ' || b) ;
+end;
+
+--------------------------------------------------------------

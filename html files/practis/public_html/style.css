@@ -1,0 +1,28 @@
+#maincountainer{width:80%;
+    height: 400px;
+    margin: 0 auto;}
+#headercontainer{width:100%;
+    height: 50px;
+    background: #00ffcc;
+    margin: 0 auto;}
+
+#bodycontainer
+    {width: 100%;
+    height: 350px;
+    background: #3399ff;
+    margin: 0 auto;}
+
+#a{width: 25%;
+    hight: 350px;
+    background: #3399ff;
+    float: left;}
+    
+#b{width: 50%;
+    height: 350px;
+    background: #ff33ff;
+    float: left;}
+    
+#c{width: 25%;
+    Height: 350px;
+    background: #3399ff;
+    float: left;}

@@ -1,0 +1,79 @@
+
+SQL> connect
+Enter user-name: system
+Enter password:
+Connected.
+SQL> connect ID1244155
+Enter password:
+Connected.
+SQL> show autocommit;
+autocommit OFF
+SQL> set autocommit on;
+SQL> show autocommit;
+autocommit IMMEDIATE
+SQL> create table std(id number(3) primary key,name varchar(15) not null);
+
+Table created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+SYS_C007088
+SYS_C007104
+SYS_C007044
+
+SQL> create index name_inx on std(name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+SYS_C007088
+SYS_C007104
+NAME_INX
+SYS_C007044
+
+SQL> drop index name_inx;
+
+Index dropped.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME
+------------------------------
+SYS_C007088
+SYS_C007104
+SYS_C007044
+
+SQL> create synonym std_syn for std;
+
+Synonym created.
+
+SQL> insert into std(id,name) values(1,'mao');
+
+1 row created.
+
+Commit complete.
+SQL> insert into std(id,name) values(2,'tom');
+
+1 row created.
+
+Commit complete.
+SQL> select * from std_syn;
+
+        ID NAME
+---------- ---------------
+         1 mao
+         2 tom
+
+SQL> select * from std;
+
+        ID NAME
+---------- ---------------
+         1 mao
+         2 tom
+
+SQL>

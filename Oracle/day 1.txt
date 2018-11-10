@@ -1,0 +1,16 @@
+1. (p-1.5) select * from departments;
+2. (p-1.6) select department_id, location_id from departments;
+3. (p-1.10) select last_name, salary, salary+300 from employees;
+4. (p-1.11.a) select last_name, salary, 12*salary+100 from employees;
+5. (p-1.11.b) select last_name, salary, 12*(salary+100) from employees;
+6. (p-1.12) select last_name, salary, job_id, salary, commission_pct from employees;
+7. (p-1.13) select last_name, salary, 12*salary*commission_pct from employees;
+8. (p-1.15.a) select last_name as name, commission_pct as  comm from employees;
+9. (p-1.15.b) select last_name "Name" , salary*12 "Annual salary" from employees;
+10. (p-1.16) select last_name || job_id as "employees" from employees;
+11. (p-1.18) select last_name || ' is a ' || job_id as "Employees Details" from employees;
+12. (p-1.19) select department_name || q'[, it's assigned Manager Id: ]' || manager_id as "department and manager" from departments;
+13. (p-1.20.a) select department_id from employees;
+14. (p-1.20.b) select distinct department_id from employees;
+
+exm: (p1-3) (p-1.39) select employee_id, last_name, salary*12 "annual salary" from employees;

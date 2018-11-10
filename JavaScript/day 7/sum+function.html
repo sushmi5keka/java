@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+	function dosum(x,y) {
+		var sum=x+y;
+		return sum;
+	}
+	var rs = dosum(10, 20);
+	document.write(rs);
+
+document.write("<hr/>")
+///////////////////////////////////////////////////
+
+
+
+	function doSum (x, y) {
+		var sum = x + y;
+		return sum;
+	}
+	var a =parseInt(prompt("enter value of x: ", ""));
+	var b =parseInt(prompt("enter value of y: ", ""));
+	var rs = doSum(a, b)
+	document.write(rs);
+	
+document.write("<hr/>")
+///////////////////////////////////////////////////
+
+	
+	function doSumm (x, y) {
+		var sum = x + y;
+		return sum;
+	}
+	
+	var rs = doSumm((parseInt(prompt("enter value of x: ", ""))),
+					(parseInt(prompt("enter value of y: ", ""))));
+	document.write(rs);
+	
+document.write("<hr/>")
+///////////////////////////////////////////////////
+
+	function fullName (fn, mn, ln) {
+		var name = fn +" "+ mn +" "+ ln;
+		return name;	 
+	}
+	var p =prompt("enter firstName: ", "");
+	var q =prompt("enter middelName: ", "");
+	var r =prompt("enter lastName: ", "");
+	var rs =fullName(p, q, r)
+	document.write(rs);
+</script>
+</body>
+</html>

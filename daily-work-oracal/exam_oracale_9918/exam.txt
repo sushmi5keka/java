@@ -1,0 +1,586 @@
+SQL> connect
+Enter user-name: exam
+Connected.
+SQL> savepoint sp;
+
+Savepoint created.
+
+SQL> show autocommit;
+autocommit OFF
+SQL> create table department(dep_id number(2) primary key,department_name varchar2(7) not null);
+
+Table created.
+
+SQL> rollback to sp;
+rollback to sp
+*
+ERROR at line 1:
+ORA-01086: savepoint 'SP' never established in this session or is invalid 
+
+
+SQL> autocommit on;
+SP2-0734: unknown command beginning "autocommit..." - rest of line ignored.
+SQL> set autocommit on;
+SQL> create table departments(dep_id number(2) primary key,department_name varchar2(7) not null);
+
+Table created.
+
+SQL> create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date defaultsysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foregin key(dep_id) references departments(department_id));
+create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date defaultsysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foregin key(dep_id) references departments(department_id))
+                                                                                                                                                         *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date default sysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foregin key(dep_id) references departments(department_id));
+create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date default sysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foregin key(dep_id) references departments(department_id))
+                                                                                                                                                                                                                                                             *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date default sysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foreign key(dep_id) references departments(department_id));
+create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date default sysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foreign key(dep_id) references departments(department_id))
+                                                                                                                                                                                                                                                                                             *
+ERROR at line 1:
+ORA-00904: "DEPARTMENT_ID": invalid identifier 
+
+
+SQL> create table employee(emp_id number(2) primary key,emp_name varchar2(7),mobile number(7) unique,salary number(7,2) check(salary>10000),joining_date date default sysdate,country varchar2(7) default 'BD',dep_id number(2), constraint dep_emp_fk foreign key(dep_id) references departments(dep_id));
+
+Table created.
+
+SQL> describe departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEP_ID                                    NOT NULL NUMBER(2)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(7)
+
+SQL> describe employees;
+ERROR:
+ORA-04043: object employees does not exist 
+
+
+SQL> describe employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                    NOT NULL NUMBER(2)
+ EMP_NAME                                           VARCHAR2(7)
+ MOBILE                                             NUMBER(7)
+ SALARY                                             NUMBER(7,2)
+ JOINING_DATE                                       DATE
+ COUNTRY                                            VARCHAR2(7)
+ DEP_ID                                             NUMBER(2)
+
+SQL> create table dep_backup as select * from departments;
+
+Table created.
+
+SQL> create or replace trigger int_dep after insert on departments for each row
+  2  declare
+  3  begin
+  4  insert into dep_backup values(:new.dep_id,:new.department_name);
+  5  dbms_output.putline('insert done');
+  6  end;
+  7  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> create or replace trigger int_dep after insert on departments for each row
+  2  declare
+  3  begin
+  4  insert into dep_backup values(:new.dep_id,:new.department_name);
+  5  dbms_output.put_line('insert done');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create or replace trigger up_dep after update on departments for each row
+  2  declare
+  3  begin
+  4  update dep_backup set department_name=:new.department_name where dep_id=:old.dep_id;
+  5  dbms_output.put_line('update done');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create or replace trigger del_dep after delete on departments for each row
+  2  declare
+  3  begin
+  4  delete dep_bacup where dep_id=:old.dep_id;
+  5  dbms_output.put_line('delete done');
+  6  end;
+  7  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> create or replace trigger del_dep after delete on departments for each row
+  2  declare
+  3  begin
+  4  delete dep_bacup where dep_id=:old.dep_id;
+  5  
+  6  
+  7  /
+
+Warning: Trigger created with compilation errors.
+
+SQL> create or replace trigger del_dep after delete on departments for each row
+  2  declare
+  3  begin
+  4  delete dep_backup where dep_id=:old.dep_id;
+  5  dbms_output.put_line('delete done');
+  6  end;
+  7  /
+
+Trigger created.
+
+SQL> create sequence seq_dep
+  2  increment by 10
+  3  start with 1
+  4  maxvalue 100
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+SQL> create sequence seq_emp
+  2  increment by 5
+  3  start with 1
+  4  maxvalue 100
+  5  nocache
+  6  nocycle;
+
+Sequence created.
+
+SQL> select sequence_name from user_sequences;
+
+SEQUENCE_NAME                                                                   
+------------------------------                                                  
+SEQ_DEP                                                                         
+SEQ_EMP                                                                         
+
+SQL> select index_name from indexes;
+select index_name from indexes
+                       *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007244                                                                     
+SYS_C007246                                                                     
+SYS_C007248                                                                     
+SYS_C007249                                                                     
+
+SQL> create index inx_dep on departments(department_name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007244                                                                     
+SYS_C007246                                                                     
+SYS_C007248                                                                     
+SYS_C007249                                                                     
+INX_DEP                                                                         
+
+SQL> create or replace procedure pro_in_dep
+  2  d_id in departments.dep_id%type;
+  3  d_name in departments.department_name%type;
+  4  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_in_dep
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type,
+  4  is
+  5  brgin
+  6  insert into department(dep_id,deppartment_name) values(d_id,d_name);
+  7  end;
+  8  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_in_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type)
+  4  is
+  5  begin
+  6  insert into department(dep_id,deppartment_name) values(d_id,d_name);
+  7  end;
+  8  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_in_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type)
+  4  is
+  5  begin
+  6  insert into departments(dep_id,deppartment_name) values(d_id,d_name);
+  7  end;
+  8  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_in_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type)
+  4  is
+  5  begin
+  6  insert into departments(dep_id,department_name) values(d_id,d_name);
+  7  end;
+  8  /
+
+Procedure created.
+
+SQL> begin
+  2  pro_in_dep(seq_dep.nextval,'ADMIN');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> begin
+  2  pro_in_dep(seq_dep.nextval,'SOFTWERE');
+  3  end;
+  4  /
+begin
+*
+ERROR at line 1:
+ORA-12899: value too large for column "EXAM"."DEPARTMENTS"."DEPARTMENT_NAME" 
+(actual: 8, maximum: 7) 
+ORA-06512: at "EXAM.PRO_IN_DEP", line 6 
+ORA-06512: at line 2 
+
+
+SQL> begin
+  2  pro_in_dep(seq_dep.nextval,'SOFTWER');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> begin
+  2  pro_in_dep(seq_dep.nextval,'Market');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> create view view_dep as select * from departments;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME                                                                       
+------------------------------                                                  
+VIEW_DEP                                                                        
+
+SQL> create synonym syn_dep for departments;
+
+Synonym created.
+
+SQL> create synonym syn_dep_view for view_dep;
+
+Synonym created.
+
+SQL> select * from view_dep;
+
+    DEP_ID DEPARTM                                                              
+---------- -------                                                              
+         1 ADMIN                                                                
+        21 SOFTWER                                                              
+        31 Market                                                               
+
+SQL> select * from syn_dep;
+
+    DEP_ID DEPARTM                                                              
+---------- -------                                                              
+         1 ADMIN                                                                
+        21 SOFTWER                                                              
+        31 Market                                                               
+
+SQL> select * from syn_dep_view;
+
+    DEP_ID DEPARTM                                                              
+---------- -------                                                              
+         1 ADMIN                                                                
+        21 SOFTWER                                                              
+        31 Market                                                               
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007244                                                                     
+SYS_C007246                                                                     
+SYS_C007248                                                                     
+SYS_C007249                                                                     
+INX_DEP                                                                         
+
+SQL> create index inx_emp on employee(emp_name);
+
+Index created.
+
+SQL> select index_name from user_indexes;
+
+INDEX_NAME                                                                      
+------------------------------                                                  
+SYS_C007244                                                                     
+SYS_C007246                                                                     
+SYS_C007248                                                                     
+SYS_C007249                                                                     
+INX_DEP                                                                         
+INX_EMP                                                                         
+
+6 rows selected.
+
+SQL> create or replace procedure pro_in_emp(
+  2  e_id in employee.emp_id%type;
+  3  e_name in employee>emp_name%type;
+  4  e_mobile in employee
+  5  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_in_emp(
+  2  e_id in employee.emp_id%type,
+  3  e_name in employee.emp_name%type,
+  4  e_mobile in employee.mobile%type,
+  5  e_salary in employee.salary%type,
+  6  e_date in employee.joining_date%type,
+  7  e_country in employee.country%type)
+  8  is
+  9  begin
+ 10  insert into employee(emp_id,emp_name,mobile,salary,joining_date,country) values(e_id,e_name,e_mobile,e_salary,e_date,e_country);
+ 11  end;
+ 12  /
+
+Procedure created.
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'moly',123,15000);
+  3  end;
+  4  /
+pro_in_emp(seq_emp.nextval,'moly',123,15000);
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00306: wrong number or types of arguments in call to 'PRO_IN_EMP' 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'moly',123,15000,'','');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'moly',123,15000,'','',10);
+  3  end;
+  4  /
+pro_in_emp(seq_emp.nextval,'moly',123,15000,'','',10);
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00306: wrong number or types of arguments in call to 'PRO_IN_EMP' 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'poly',124,20000,'5-sep-2018','',10);
+  3  end
+  4  /
+end
+  *
+ERROR at line 3:
+ORA-06550: line 3, column 3: 
+PLS-00103: Encountered the symbol "end-of-file" when expecting one of the 
+following: 
+; <an identifier> <a double-quoted delimited-identifier> 
+The symbol ";" was substituted for "end-of-file" to continue. 
+
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'poly',124,20000,'5-sep-2018','',10);
+  3  end;
+  4  /
+pro_in_emp(seq_emp.nextval,'poly',124,20000,'5-sep-2018','',10);
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00306: wrong number or types of arguments in call to 'PRO_IN_EMP' 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'poly',124,20000,'5-sep-2018','');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> select * from employee;
+
+    EMP_ID EMP_NAM     MOBILE     SALARY JOINING_D COUNTRY     DEP_ID           
+---------- ------- ---------- ---------- --------- ------- ----------           
+         1 moly           123      15000                                        
+         6 poly           124      20000 05-SEP-18                              
+
+SQL> select * from departments;;
+select * from departments;
+                         *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> select * from departments;
+
+    DEP_ID DEPARTM                                                              
+---------- -------                                                              
+         1 ADMIN                                                                
+        21 SOFTWER                                                              
+        31 Market                                                               
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'joly',125,21000,'7-sep-2018','japan',21);
+  3  end;
+  4  /
+pro_in_emp(seq_emp.nextval,'joly',125,21000,'7-sep-2018','japan',21);
+*
+ERROR at line 2:
+ORA-06550: line 2, column 1: 
+PLS-00306: wrong number or types of arguments in call to 'PRO_IN_EMP' 
+ORA-06550: line 2, column 1: 
+PL/SQL: Statement ignored 
+
+
+SQL> begin
+  2  pro_in_emp(seq_emp.nextval,'joly',125,21000,'7-sep-2018','japan');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> create view view_imp as select * from employee;
+
+View created.
+
+SQL> select view_name from user_views;
+
+VIEW_NAME                                                                       
+------------------------------                                                  
+VIEW_DEP                                                                        
+VIEW_IMP                                                                        
+
+SQL> create synonym syn_emp for employee;
+
+Synonym created.
+
+SQL> create synonym syn_emp_view for view_imp;
+
+Synonym created.
+
+SQL> select * from view_imp;
+
+    EMP_ID EMP_NAM     MOBILE     SALARY JOINING_D COUNTRY     DEP_ID           
+---------- ------- ---------- ---------- --------- ------- ----------           
+         1 moly           123      15000                                        
+         6 poly           124      20000 05-SEP-18                              
+        11 joly           125      21000 07-SEP-18 japan                        
+
+SQL> select * from syn_emp
+  2  ;
+
+    EMP_ID EMP_NAM     MOBILE     SALARY JOINING_D COUNTRY     DEP_ID           
+---------- ------- ---------- ---------- --------- ------- ----------           
+         1 moly           123      15000                                        
+         6 poly           124      20000 05-SEP-18                              
+        11 joly           125      21000 07-SEP-18 japan                        
+
+SQL> select * from syn_emp_view;
+
+    EMP_ID EMP_NAM     MOBILE     SALARY JOINING_D COUNTRY     DEP_ID           
+---------- ------- ---------- ---------- --------- ------- ----------           
+         1 moly           123      15000                                        
+         6 poly           124      20000 05-SEP-18                              
+        11 joly           125      21000 07-SEP-18 japan                        
+
+SQL> create or replace procedure pro_up_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in department.department_name%type)
+  4  is
+  5  begin
+  6  update departments set dep_name=d_name where dep_id=d_id;
+  7  end;
+  8  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_up_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type)
+  4  is
+  5  begin
+  6  update departments set dep_name=d_name where dep_id=d_id;
+  7  end;
+  8  /
+
+Warning: Procedure created with compilation errors.
+
+SQL> create or replace procedure pro_up_dep(
+  2  d_id in departments.dep_id%type,
+  3  d_name in departments.department_name%type)
+  4  is
+  5  begin
+  6  update departments set department_name=d_name where dep_id=d_id;
+  7  end;
+  8  /
+
+Procedure created.
+
+SQL> begin
+  2  pro_up_dep(31,'sales');
+  3  end;
+  4  /
+
+PL/SQL procedure successfully completed.
+
+Commit complete.
+SQL> select * from depaetments;
+select * from depaetments
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from departments;
+
+    DEP_ID DEPARTM                                                              
+---------- -------                                                              
+         1 ADMIN                                                                
+        21 SOFTWER                                                              
+        31 sales                                                                
+
+SQL> spool off;

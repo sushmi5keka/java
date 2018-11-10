@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body>
+<script>
+	var counter = 0;//sequence
+	var endIt =10;
+	while (counter <= endIt) {//loop begins
+			
+			counter++;
+			document.write("print : " +counter + "<br/>");
+	}  		//loop ends
+	
+	document.write("<hr/>")
+	/////////////////////////////////////////////////////////////
+	var counter = 0;//sequence
+	var endIt =10;
+	while (counter < endIt) {//loop begins
+			
+			counter++;
+			if (counter ==5) {
+				continue;
+			}
+			document.write("print : " +counter + "<br/>");
+	}  		//loop ends
+	
+	
+	document.write("<hr/>")
+	/////////////////////////////////////////////////////////////
+	var counter = 0;//sequence
+	var endIt =10;
+	while (counter < endIt) {//loop begins
+			
+			counter++;
+			if (counter ==6) {
+				break;
+			}
+			document.write("print : " +counter + "<br/>");
+	}  		//loop ends
+	
+	document.write("<hr/>");
+	/////////////////////////////////////////////////////////////
+	var counter = 0;//sequence
+	var endIt =10;
+	while (counter < endIt) {//loop begins
+			
+			counter++;
+			/* if (counter >=2 && counter <=5) {
+				document.write("print : " +counter + "<br/>");
+			}
+			*/
+			if (counter < 2 || counter > 5) {
+				continue;
+			}
+				document.write("print =============: " +counter + "<br/>");
+			
+	}  		//loop ends
+</script>
+</body>	
+</html>

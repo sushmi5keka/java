@@ -1,0 +1,186 @@
+*create user 'user1' & 'user2'...
+*create table in user1 named 'teacher'...
+*create table in user2 named 'student'...
+*user1 can see user2's table 'student'...
+*but user2 can not see user1's table...
+*insert data to user2.student ,in user1...
+
+solution :
+----------
+
+
+SQL*Plus: Release 11.2.0.2.0 Production on Wed Aug 8 08:59:43 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> create user user1 identified by sys;
+
+User created.
+
+SQL> create user user2 identified by sys;
+
+User created.
+
+SQL> create role manager;
+create role manager
+            *
+ERROR at line 1:
+ORA-01921: role name 'MANAGER' conflicts with another user or role name
+
+
+SQL> create role manage;
+
+Role created.
+
+SQL> grant create session,create table to manage;
+
+Grant succeeded.
+
+SQL> grant manage to user1;
+
+Grant succeeded.
+
+SQL> grant manage to user2;
+
+Grant succeeded.
+
+SQL> alter user user1 quota 500m on system;
+
+User altered.
+
+SQL> alter user user2 quota 500m on system;
+
+User altered.
+
+SQL> connect;
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> create table teacher(id number(3) primary key,name varchar2(15) not null);
+
+Table created.
+
+SQL> insert into teacher(id,name) value(1,'rezaul islam');
+insert into teacher(id,name) value(1,'rezaul islam')
+                             *
+ERROR at line 1:
+ORA-00926: missing VALUES keyword
+
+
+SQL> insert into teacher(id,name) values(1,'rezaul islam');
+
+1 row created.
+
+SQL> insert into teacher(id,name) values(2,'jeasmin aktar');
+
+1 row created.
+
+SQL> connect
+Enter user-name: user2
+Enter password:
+Connected.
+SQL> create table student(id number(3) primary key,name varchar2(15) not null);
+
+Table created.
+
+SQL> insert into student(id,name) values(1,'Arifin');
+
+1 row created.
+
+SQL> insert into student(id,name) values(2,'jubayer');
+
+1 row created.
+
+SQL> connect
+Enter user-name: sys as sysdba;
+SP2-0306: Invalid option.
+Usage: CONN[ECT] [{logon|/|proxy} [AS {SYSDBA|SYSOPER|SYSASM}] [edition=value]]
+where <logon> ::= <username>[/<password>][@<connect_identifier>]
+      <proxy> ::= <proxyuser>[<username>][/<password>][@<connect_identifier>]
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant select on user2.student to user1 with grant option;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> select * from teacher;
+
+        ID NAME
+---------- ---------------
+         1 rezaul islam
+         2 jeasmin aktar
+
+SQL> connect
+Enter user-name: user2
+Enter password:
+Connected.
+SQL> select * from student;
+
+        ID NAME
+---------- ---------------
+         1 Arifin
+         2 jubayer
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> select * from student;
+select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: user2
+Enter password:
+Connected.
+SQL> select * from teacher;
+select * from teacher
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> select * from user2.student;
+
+        ID NAME
+---------- ---------------
+         1 Arifin
+         2 jubayer
+
+SQL> connect sys as sysdba;
+Enter password:
+Connected.
+SQL> grant insert on user2.student to user1 with grant option;
+
+Grant succeeded.
+
+SQL> connect
+Enter user-name: user1
+Enter password:
+Connected.
+SQL> insert into user2.student(id,name) values(3,'moli');
+
+1 row created.
+
+SQL> select * from user2.student;
+
+        ID NAME
+---------- ---------------
+         1 Arifin
+         2 jubayer
+         3 moli

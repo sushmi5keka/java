@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<style type="text/css">
+body {
+	background-color:#33C ;
+	font-family:Verdana ;	
+}
+h2 {
+	font-size:24pt;
+	color: #0CF;
+	font-weight:bold;
+}
+
+a {
+	color: #C9C;
+	font-weight:bold;}	
+}
+</style>
+<script>
+	function fillIn(){
+		document.forms[0].elements[1].value="javaScript is hre!"
+	}
+</script>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+</head>
+
+<body bgcolor="#9966CC" onKeyPress="alert('This was set up in the body element.');">
+<center>
+<h2>Click on the link text,button,or text window.<br>Then press any key.</h2>
+<a href="place.html" onKeyUp ="alert('The <a href. did it!');">Link Text</a><p>
+<form>
+<input type="button" value="surprise me" onKeyPress="alert('you have to press the surprise me button firsty!')"><p>
+<input type="text" size="20" onKeyDown="fillIn()">
+</center>
+</form>
+</center>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<script>
+var recordIt=0
+function moveIt() {
+	recordIt += 1 ;
+	document.viewer.spot.value=recordIt;
+	}
+</script>
+</head>
+
+<body>
+<center>
+<p>
+<h2>How many mouse moves?</h2>
+</p>
+</center>
+<form name="viewer">
+<input type="text" name="spot" size=3>
+</form>
+<a href=javascript:void onMouseMove="moveIt()">Tickle this spot</a>
+</body>
+</html>
