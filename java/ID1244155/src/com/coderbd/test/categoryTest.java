@@ -12,9 +12,9 @@ import java.util.Locale;
 public class categoryTest {
 
     public static void main(String[] args) {
-    ProductCategoryService.createTable();
-    //    ProductCategory cat=new ProductCategory();
-      //  cat.setName("Drone");
+   // ProductCategoryService.createTable();
+      ProductCategory cat=new ProductCategory();
+      cat.setName("mobile");
         
       //  ProductCategoryService.insert(cat);
 

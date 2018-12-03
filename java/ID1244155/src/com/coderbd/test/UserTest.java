@@ -11,8 +11,9 @@ import java.util.Date;
 public class UserTest {
 
     public static void main(String[] args) {
-      //  UserService.createTable();
-      User user = new User("Israt", "123", "admin", "Israt", "jahan", "israt@gmail.com", "01900000000", new Date(), true);
+      
+        //UserService.createTable();
+     User user = new User("Israt", "123", "admin", "Israt", "jahan", "israt@gmail.com", "01900000000", new Date(), true);
         UserService.insert(user);
          
        // User u = UserService.getUserbyUserName("admin", "123", true);
